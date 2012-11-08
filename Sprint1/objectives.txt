@@ -1,4 +1,0 @@
-- Création d’une plateforme de visuel d’un arbre hiérarchique (Ouverture d’une fenêtre en Java, utilisation de JOGL)
-- Créer un programme d’interprétation d’un fichier XML
-- Se documenter sur les Quaternions, le Skinning, les Bones : Comment construire une hiérarchie de Bones et l’afficher ?
-
