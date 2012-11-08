@@ -49,9 +49,9 @@ public class JDOMHierarchy {
 						Element child = (Element)itChildren.next();
 						drawJDOM(child, gl);
 					}
-				
+					
 				}
-			gl.glPopMatrix();
+				gl.glPopMatrix();
 		}else{
 			if(!element.getChildren().isEmpty()){
 				List childrenList = element.getChildren();
@@ -71,9 +71,14 @@ public class JDOMHierarchy {
 			
 			float height = Float.parseFloat(element.getAttributeValue("height"));
 			float angle = Float.parseFloat(element.getAttributeValue("angle"));
+			String axeXYZ = element.getAttributeValue("axe"); //On récupère l'attribut du trunck actuel
+			String vect[] = axeXYZ.split(" "); // On sépare nos axes avec split()
+			float x = Float.parseFloat(vect[0]); // On stocke nos axes (x,y,z)
+			float y = Float.parseFloat(vect[1]);
+			float z = Float.parseFloat(vect[2]);
 			
 			gl.glPushMatrix();
-				gl.glRotatef(angle, 0, 0, 1);
+				gl.glRotatef(angle, x, y, z);
 				gl.glScalef(1, height, 1);
 				drawPrimitiveTrunk(gl);
 			gl.glPopMatrix();
@@ -83,7 +88,7 @@ public class JDOMHierarchy {
 			float size = Float.parseFloat(element.getAttributeValue("size"));
 			gl.glPushMatrix();
 				gl.glTranslatef(0, size/2, 0);
-				gl.glRotatef(45, 0, 0, 1);				
+				gl.glRotatef(45, 0, 0, 1);		
 				gl.glScalef(size, size, 1);
 				drawPrimitiveLeaf(gl);
 			gl.glPopMatrix();

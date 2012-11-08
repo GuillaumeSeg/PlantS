@@ -8,11 +8,20 @@ import TreeElements.NodeTree;
 public class JOGLRenderer implements GLEventListener {
 	
 	private JDOMHierarchy m_TreeHierarchy;
+	float angle1 = 0;
+	float angle2 = 0;
 	
 	public void display(GLAutoDrawable drawable) {
 		// TODO Auto-generated method stub
 		GL2 gl = drawable.getGL().getGL2();
 		gl.glClear(GL2.GL_COLOR_BUFFER_BIT | GL2.GL_DEPTH_BUFFER_BIT);
+		
+		//float angle = (System.currentTimeMillis()/10)%360;
+		float angle1 =+ 1;
+		float angle2 =+ 0.1f;
+		gl.glRotatef(angle2, 1.0f, 0.0f, 0.0f);
+		gl.glRotatef(angle1, 0.0f, 1.0f, 0.0f);
+		//gl.glRotatef(angle, 0.0f, 0.0f, 1.0f);
 		
 		gl.glBlendFunc(GL2.GL_SRC_ALPHA, GL2.GL_ONE_MINUS_SRC_ALPHA);
 		gl.glPushMatrix();
