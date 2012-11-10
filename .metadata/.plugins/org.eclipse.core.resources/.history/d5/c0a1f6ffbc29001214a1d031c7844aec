@@ -1,0 +1,36 @@
+import javax.media.opengl.GL2;
+import javax.media.opengl.GL3;
+import javax.media.opengl.GLAutoDrawable;
+import javax.media.opengl.GLEventListener;
+
+public class JOGLRenderer implements GLEventListener {
+	
+	public void display(GLAutoDrawable drawable) {
+		
+		GL3 gl = drawable.getGL().getGL3();
+		
+		System.out.println("GL Error(s) : " + gl.glGetError());
+		
+	}
+
+	public void dispose(GLAutoDrawable drawable) {
+
+	}
+
+	public void init(GLAutoDrawable drawable) {
+		
+		//setup opengl
+        GL3 gl = drawable.getGL().getGL3();       
+        gl.glClearColor(0.2f, 0.2f, 0.0f, 0.0f);        
+        gl.glClearDepth(1.0f);          
+        gl.glEnable(GL.GL_DEPTH_TEST);         
+        gl.glDepthFunc(GL.GL_LEQUAL);           
+        gl.glHint(GL2.GL_PERSPECTIVE_CORRECTION_HINT, GL.GL_NICEST);
+	}
+
+	public void reshape(GLAutoDrawable drawable, int arg1, int arg2, int arg3, int arg4) {
+
+	}
+	
+	
+}

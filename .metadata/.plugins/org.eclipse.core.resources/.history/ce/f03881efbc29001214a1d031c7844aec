@@ -1,0 +1,29 @@
+import javax.media.opengl.GL2;
+import javax.media.opengl.GL3;
+import javax.media.opengl.GLAutoDrawable;
+import javax.media.opengl.GLEventListener;
+
+public class JOGLRenderer implements GLEventListener {
+	
+	public void display(GLAutoDrawable drawable) {
+		
+		GL2 gl = drawable.getGL().getGL2();
+		
+		System.out.println("GL Error(s) : " + gl.glGetError());
+		
+	}
+
+	public void dispose(GLAutoDrawable drawable) {
+
+	}
+
+	public void init(GLAutoDrawable drawable) {
+		GL3 gl = drawable.getGL().getGL2();
+	}
+
+	public void reshape(GLAutoDrawable drawable, int arg1, int arg2, int arg3, int arg4) {
+
+	}
+	
+	
+}
