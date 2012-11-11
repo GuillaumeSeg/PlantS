@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+<<<<<<< HEAD
+	<section name="org.eclipse.ui.internal.QuickAccess">
+		<item value="853" key="dialogWidth"/>
+		<item value="480" key="dialogHeight"/>
+		<list key="orderedProviders">
+		</list>
+		<list key="textArray">
+		</list>
+		<list key="orderedElements">
+		</list>
+		<list key="textEntries">
+		</list>
+	</section>
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="0" key="DIALOG_Y_ORIGIN"/>
+		<item value="7" key="DIALOG_X_ORIGIN"/>
+=======
 	<section name="FileSystemImportWizard">
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_OVERWRITE_EXISTING_RESOURCES_ID"/>
 		<item value="false" key="WizardFileSystemResourceImportPage1.STORE_CREATE_CONTAINER_STRUCTURE_ID"/>
@@ -17,5 +34,6 @@
 		<list key="ImportExportPage.STORE_EXPANDED_IMPORT_CATEGORIES">
 			<item value="org.eclipse.ui.Basic"/>
 		</list>
+>>>>>>> 2641e5688fab366be06072345f4269143642186d
 	</section>
 </section>

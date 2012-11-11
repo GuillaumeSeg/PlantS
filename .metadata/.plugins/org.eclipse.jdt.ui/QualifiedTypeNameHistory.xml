@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<<<<<<< HEAD
+<qualifiedTypeNameHistroy/>
+=======
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="java.nio.ByteBuffer"/>
 <fullyQualifiedTypeName name="java.nio.ByteOrder"/>
@@ -15,3 +18,4 @@
 <fullyQualifiedTypeName name="javax.media.opengl.glu.GLU"/>
 <fullyQualifiedTypeName name="utils.CST"/>
 </qualifiedTypeNameHistroy>
+>>>>>>> 2641e5688fab366be06072345f4269143642186d
