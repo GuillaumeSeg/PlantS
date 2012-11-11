@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 INDEX VERSION 1.126+/media/DDE-640/IMAC/Projets_Tut/PlantS/.metadata/.plugins/org.eclipse.jdt.core
 2593609531.index
 3829351191.index
@@ -16,3 +17,23 @@ INDEX VERSION 1.126+/media/DDE-640/IMAC/Projets_Tut/PlantS/.metadata/.plugins/or
 1022003584.index
 303276032.index
 4267884898.index
+=======
+INDEX VERSION 1.126+/home/bastien/workspace/PlantS/.metadata/.plugins/org.eclipse.jdt.core
+1230503809.index
+3181136795.index
+3702602057.index
+417373247.index
+1648329193.index
+303276032.index
+1159935248.index
+2333798842.index
+2683054613.index
+2912222014.index
+1698757907.index
+1831292310.index
+693754825.index
+45647795.index
+1791281947.index
+436744212.index
+2456322530.index
+>>>>>>> 2641e5688fab366be06072345f4269143642186d
