@@ -1,0 +1,14 @@
+import java.util.Stack;
+
+
+public class MatrixStack {
+
+	public static void main(String[] args) {
+		
+		Stack pileMatrix = new Stack();
+		pileMatrix.push(15);
+		System.out.println(pileMatrix.peek().toString());
+
+	}
+
+}

@@ -1,0 +1,23 @@
+import java.util.Stack;
+
+
+public class MatrixStack {
+
+	public static void main(String[] args) {
+		
+		Stack pileMatrix = new Stack();
+		pileMatrix.push(15);
+		pileMatrix.push(9);
+		pileMatrix.push(4);
+		System.out.println(pileMatrix.peek());
+		System.out.println(pileMatrix.search(45));
+		System.out.println(pileMatrix.empty());
+		pileMatrix.pop();
+		pileMatrix.pop();
+		System.out.println(pileMatrix.peek());
+		pileMatrix.pop();
+		System.out.println(pileMatrix.empty());
+
+	}
+
+}
