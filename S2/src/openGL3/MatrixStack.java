@@ -1,72 +1,87 @@
 package openGL3;
 import java.util.Stack;
 
-import javax.vecmath.Matrix3d;
-import javax.vecmath.Matrix4d;
-import javax.vecmath.Vector3d;
+import javax.vecmath.Matrix4f;
 import javax.vecmath.Vector3f;
 
 public class MatrixStack {
 	
-	private Stack<Matrix4d> m_Stack;
+	private Stack<Matrix4f> m_Stack;
 	
-	// créé une matrice à la base de la pile et l'initialise à Identité
 	public MatrixStack() {
-		m_Stack = new Stack<Matrix4d>();
-		m_Stack.push(new Matrix4d());
-		m_Stack.peek().setIdentity();
+		m_Stack = new Stack<Matrix4f>();
+		Matrix4f id = new Matrix4f();
+		id.setIdentity();
+		m_Stack.push(id);
 	}
 	
-	// Copie la matrice en tête de pile
 	public void push() {
-		m_Stack.push(top());
+		Matrix4f m = new Matrix4f(top());
+		m_Stack.push(m);
 	}
 	
-	// Retire la matrice en tête de pile
 	public void pop() {
 		m_Stack.pop();
 	}
 	
-	// renvoie la matrice de tête
-	public Matrix4d top() {
+	public Matrix4f top() {
 		return m_Stack.peek();
 	}
 	
-	public void mult(Matrix4d mat){
+	public void mult(Matrix4f mat){
 		top().mul(mat);
 	}
-
-	// Modifie la matrice en tête de pile
-	public void set(Matrix4d mat){
-		top().set(mat);
+	
+	public void scale(float s){
+		Matrix4f rotate = new Matrix4f();
+		rotate.set(s);
+		mult(rotate);
 	}
 	
-	// Effectue un scale sur la matrice en tête de pile
-	public void scale(double s){
-		top().setScale(s);
+	public void rotate(Vector3f dir, float angle){
+		
+		dir.normalize();
+		angle = angle * 2.f * (float)Math.PI / 360.f;
+		float cos = (float) Math.cos(angle);
+		float sin = (float) Math.sin(angle);
+		
+		float a11 = dir.x*dir.x + (1-dir.x*dir.x)*cos;
+		float a12 = dir.x*dir.y*(1-cos) - dir.z*sin;
+		float a13 = dir.x*dir.z*(1-cos) + dir.y*sin;
+		float a14 = 0;
+		float a21 = dir.x*dir.y*(1-cos) + dir.z*sin;
+		float a22 = dir.y*dir.y + (1-dir.y*dir.y)*cos;
+		float a23 = dir.y*dir.z*(1-cos) - dir.x*sin;
+		float a24 = 0;
+		float a31 = dir.x*dir.z*(1-cos) - dir.y*sin;
+		float a32 = dir.y*dir.z*(1-cos) + dir.x*sin;
+		float a33 = dir.z*dir.z + (1-dir.z*dir.z)*cos;
+		float a34 = 0;
+		float a41 = 0;
+		float a42 = 0;
+		float a43 = 0;
+		float a44 = 1;
+		
+		Matrix4f rotate = new Matrix4f(a11, a12, a13, a14, a21, a22, a23, a24, a31, a32, a33, a34, a41, a42, a43, a44);
+		mult(rotate);
 	}
 	
-	// Effectue une rotation sur la matrice en tête de pile
-	public void rotate(Matrix3d rotate){
-		top().setRotation(rotate);
+	public void translate(Vector3f t){
+		Matrix4f translate = new Matrix4f();
+		translate.set(t);
+		mult(translate);
 	}
 	
-	// Effectue une translation sur la matrice en tête de pile
-	public void translate(Vector3d translate){
-		top().setTranslation(translate);
+	public float[] parseTopToFloatArray() {
+		int k = 0;
+		float[] matrix = new float[16];
+		for(int col=0; col<4; ++col) {
+			for(int row=0; row<4; ++row) {
+				matrix[k] = top().getElement(row, col);
+				++k;
+			}
+		}
+		return matrix;
 	}
-	
-	public static Matrix3d createRotationMatrix(float alpha, Vector3f dir) {
-		return new Matrix3d();
-	}
-	
-	public static Matrix3d createTranslationMatrix(float tx, float ty, float tz) {
-		return new Matrix3d(1, 0, 0, 0, 1, 0, tx, ty, tz);
-	}
-	
-	public static Matrix3d createScaleMatrix(float sx, float sy, float sz) {
-		return new Matrix3d(sx, 0, 0, 0, sy, 0, 0, 0, sz);
-	}
-
 
 }

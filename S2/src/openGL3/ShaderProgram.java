@@ -15,11 +15,13 @@ public class ShaderProgram {
     int m_iFragmentShader;
     int m_iProgram;
     
-	public ShaderProgram(GL2ES2 gl, File vertexShaderFile, File fragmentShaderFile) {
+	public ShaderProgram(GLAutoDrawable drawable, File vertexShaderFile, File fragmentShaderFile) {
 		
 		/*********************************************/
 		/*** FILL AND COMPILE SHADERS INTO PROGRAM ***/
 		/*********************************************/
+		
+		GL2ES2 gl = drawable.getGL().getGL2ES2();
 		
 		m_iVertexShader = gl.glCreateShader(GL2ES2.GL_VERTEX_SHADER);
 		m_iFragmentShader = gl.glCreateShader(GL2ES2.GL_FRAGMENT_SHADER);

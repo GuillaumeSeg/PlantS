@@ -1,0 +1,10 @@
+package openGL3;
+
+public class testMatrix {
+
+	public static void main(String[] args){
+		Stack<Int> stack;
+		stack.push(15);
+	}
+	
+}

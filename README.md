@@ -7,7 +7,7 @@ Developped by :
 	Bastien Laby.
 	
 Tutors : 
-	Vincelas Biri (http://igm.univ-mlv.fr/~biri/),
+	Vencelas Biri (http://igm.univ-mlv.fr/~biri/),
 	Dominique Revuz (http://www-igm.univ-mlv.fr/~dr/)
 	
 School :
@@ -51,7 +51,7 @@ WORK :
 SPECIAL THANKS :
 
 	> IMAC Engineering school
-	> Vinceslas Biri
+	> Venceslas Biri
 	> Dominique Revuz
 	> Laurent Noel (http://etudiant.univ-mlv.fr/~lnoel/index.php?page=contact)
 	> Vincent Nozick (http://igm.univ-mlv.fr/~vnozick/?lang=fr)

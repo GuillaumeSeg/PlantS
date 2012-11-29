@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="14" version="2.0">
+<workbench progressCount="12" version="2.0">
 <workbenchAdvisor/>
 <window height="922" maximized="true" width="809" x="66" y="24">
 <fastViewData fastViewLocation="1024"/>
@@ -47,6 +47,10 @@
 </view>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<expanded>
+<category IMemento.internal.id="Errors (4 items)"/>
+<category IMemento.internal.id="Errors"/>
+</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="481" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -297,6 +301,24 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLRenderer.java" tooltip="S2/src/openGL3/JOGLRenderer.java">
+<persistable path="/S2/src/openGL3/JOGLRenderer.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ShaderProgram.java" tooltip="S2/src/openGL3/ShaderProgram.java">
+<persistable path="/S2/src/openGL3/ShaderProgram.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MatrixStack.java" tooltip="S2/src/openGL3/MatrixStack.java">
+<persistable path="/S2/src/openGL3/MatrixStack.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLWindow.java" tooltip="S2/src/openGL3/JOGLWindow.java">
+<persistable path="/S2/src/openGL3/JOGLWindow.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLApp.java" tooltip="S2/src/openGL3/JOGLApp.java">
+<persistable path="/S2/src/openGL3/JOGLApp.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JDOMHierarchy.java" tooltip="S2/src/openGL3/JDOMHierarchy.java">
+<persistable path="/S2/src/openGL3/JDOMHierarchy.java"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MatrixStack.java" tooltip="S2/src/openGL3_test2/MatrixStack.java">
 <persistable path="/S2/src/openGL3_test2/MatrixStack.java"/>
 </file>
@@ -323,18 +345,6 @@
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLRenderer.java" tooltip="S2/src/openGL3_test2/JOGLRenderer.java">
 <persistable path="/S2/src/openGL3_test2/JOGLRenderer.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLWindow.java" tooltip="S2/src/openGL3_test2/JOGLWindow.java">
-<persistable path="/S2/src/openGL3_test2/JOGLWindow.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ShaderProgram.java" tooltip="S2/src/ShaderProgram.java">
-<persistable path="/S2/src/ShaderProgram.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLRenderer.java" tooltip="S2/src/JOGLRenderer.java">
-<persistable path="/S2/src/JOGLRenderer.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="xml_tree.xml" tooltip="S1/src/xml/xml_tree.xml">
-<persistable path="/S1/src/xml/xml_tree.xml"/>
 </file>
 </mruList>
 </workbench>

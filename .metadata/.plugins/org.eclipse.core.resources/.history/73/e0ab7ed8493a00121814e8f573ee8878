@@ -1,0 +1,13 @@
+package openGL3;
+import java.util.Stack;
+
+import javax.vecmath.Matrix4f;
+
+public class testMatrix {
+
+	public static void main(String[] args){
+		Stack<Matrix4f> stack;
+		stack.push(new Matrix4f());
+	}
+	
+}
