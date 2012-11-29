@@ -1,4 +1,4 @@
-package openGL3_test2;
+package openGL3;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package openGL3_test2;
+package openGL3;
 public class JOGLApp {
 	
 	JOGLWindow m_Window;

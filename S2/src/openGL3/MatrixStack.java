@@ -1,4 +1,4 @@
-package openGL3_test2;
+package openGL3;
 import java.util.Stack;
 
 import javax.vecmath.Matrix3d;

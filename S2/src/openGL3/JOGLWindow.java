@@ -1,4 +1,4 @@
-package openGL3_test2;
+package openGL3;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
