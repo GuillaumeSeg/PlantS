@@ -7,7 +7,7 @@ Developped by :
 	Bastien Laby.
 	
 Tutors : 
-	Vencelas Biri (http://igm.univ-mlv.fr/~biri/),
+	Venceslas Biri (http://igm.univ-mlv.fr/~biri/),
 	Dominique Revuz (http://www-igm.univ-mlv.fr/~dr/)
 	
 School :
