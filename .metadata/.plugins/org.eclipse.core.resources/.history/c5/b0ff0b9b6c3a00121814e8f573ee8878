@@ -100,10 +100,10 @@ public class JOGLRenderer implements GLEventListener {
 		m_NbLeafVertices = verticesLeafPosition.length/3;
 		
 		float[] verticesLeafColor = new float[] {
-				0.1f, 0.7f, 0.0f,
-				1.5f, 0.8f, 0.1f,
-				0.05f, 0.7f, 0.0f,
-				0.1f, 0.8f, 0.1f
+				-0.5f, 0.5f, 0.0f,
+				0.5f, 0.5f, 0.0f,
+				0.5f, -0.5f, 0.0f,
+				-0.5f, -0.5f, 0.0f
 		};
 		m_VerticesLeafColor = Buffers.newDirectFloatBuffer(verticesLeafColor);
 		
@@ -220,8 +220,6 @@ public class JOGLRenderer implements GLEventListener {
 		gl.glEnableVertexAttribArray(CST.SHADER_POSITION_LOCATION);        
         gl.glVertexAttribPointer(CST.SHADER_POSITION_LOCATION, 3, GL3.GL_FLOAT, false, 0, m_VerticesLeafPosition);
         
-        gl.glEnableVertexAttribArray(CST.SHADER_COLOR_LOCATION);        
-        gl.glVertexAttribPointer(CST.SHADER_COLOR_LOCATION, 3, GL3.GL_FLOAT, false, 0, m_VerticesLeafColor);
         
         gl.glUniformMatrix4fv(m_MVPLocation, 1, false, m_MatrixStack.parseTopToFloatArray(), 0);
         

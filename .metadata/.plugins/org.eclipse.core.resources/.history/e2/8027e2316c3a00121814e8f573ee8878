@@ -23,14 +23,14 @@ public class JOGLRenderer implements GLEventListener {
 	
 	FloatBuffer m_VerticesRepere;
 	int m_NbRepereVertices;
-	
 	FloatBuffer m_VerticesTrunkPosition;
+	int m_NbTrunkPositionVertices;
 	FloatBuffer m_VerticesTrunkColor;
-	int m_NbTrunkVertices;
-
+	int m_NbTrunkColorVertices;
 	FloatBuffer m_VerticesLeafPosition;
+	int m_NbLeafPositionVertices;
 	FloatBuffer m_VerticesLeafColor;
-	int m_NbLeafVertices;
+	int m_NbLeafColorVertices;
 	
 	MatrixStack m_MatrixStack;
 	int m_MVPLocation;
@@ -82,13 +82,14 @@ public class JOGLRenderer implements GLEventListener {
 				0.0f, 1.0f, 0.0f
 		};
 		m_VerticesTrunkPosition = Buffers.newDirectFloatBuffer(verticesTrunkPosition);
-		m_NbTrunkVertices = verticesTrunkPosition.length/3;
+		m_NbTrunkPositionVertices = verticesTrunkPosition.length/3;
 		
 		float[] verticesTrunkColor = new float[] {
 				0.4f, 0.2f, 0.0f,
 				0.4f, 0.2f, 0.0f
 		};
 		m_VerticesTrunkColor = Buffers.newDirectFloatBuffer(verticesTrunkColor);
+		m_NbTrunkColorVertices = verticesTrunkColor.length/3;
 		
 		float[] verticesLeafPosition = new float[] {
 				-0.5f, 0.5f, 0.0f,
@@ -97,15 +98,16 @@ public class JOGLRenderer implements GLEventListener {
 				-0.5f, -0.5f, 0.0f
 		};
 		m_VerticesLeafPosition = Buffers.newDirectFloatBuffer(verticesLeafPosition);
-		m_NbLeafVertices = verticesLeafPosition.length/3;
+		m_NbLeafPositionVertices = verticesLeafPosition.length/3;
 		
 		float[] verticesLeafColor = new float[] {
-				0.1f, 0.7f, 0.0f,
-				1.5f, 0.8f, 0.1f,
-				0.05f, 0.7f, 0.0f,
-				0.1f, 0.8f, 0.1f
+				-0.5f, 0.5f, 0.0f,
+				0.5f, 0.5f, 0.0f,
+				0.5f, -0.5f, 0.0f,
+				-0.5f, -0.5f, 0.0f
 		};
-		m_VerticesLeafColor = Buffers.newDirectFloatBuffer(verticesLeafColor);
+		m_VerticesLeafPosition = Buffers.newDirectFloatBuffer(verticesLeafPosition);
+		m_NbLeafPositionVertices = 4;//verticesLeafPosition.length/3;
 		
 		m_MatrixStack = new MatrixStack();
 		m_MVPLocation = gl.glGetUniformLocation(m_ShaderProgram.getProgram(), "uniform_MVP");
@@ -203,29 +205,17 @@ public class JOGLRenderer implements GLEventListener {
 	
 	
 	private void drawPrimitiveTrunk(GL3 gl){
-		
 		gl.glEnableVertexAttribArray(CST.SHADER_POSITION_LOCATION);        
         gl.glVertexAttribPointer(CST.SHADER_POSITION_LOCATION, 3, GL3.GL_FLOAT, false, 0, m_VerticesTrunkPosition);
-        
-        gl.glEnableVertexAttribArray(CST.SHADER_COLOR_LOCATION);        
-        gl.glVertexAttribPointer(CST.SHADER_COLOR_LOCATION, 3, GL3.GL_FLOAT, false, 0, m_VerticesTrunkColor);
-        
         gl.glUniformMatrix4fv(m_MVPLocation, 1, false, m_MatrixStack.parseTopToFloatArray(), 0);
-        
-        gl.glDrawArrays(GL3.GL_LINES, 0, m_NbTrunkVertices);
+        gl.glDrawArrays(GL3.GL_LINES, 0, m_NbTrunkPositionVertices);
 	}
 	
 	private void drawPrimitiveLeaf(GL3 gl){
-		
 		gl.glEnableVertexAttribArray(CST.SHADER_POSITION_LOCATION);        
         gl.glVertexAttribPointer(CST.SHADER_POSITION_LOCATION, 3, GL3.GL_FLOAT, false, 0, m_VerticesLeafPosition);
-        
-        gl.glEnableVertexAttribArray(CST.SHADER_COLOR_LOCATION);        
-        gl.glVertexAttribPointer(CST.SHADER_COLOR_LOCATION, 3, GL3.GL_FLOAT, false, 0, m_VerticesLeafColor);
-        
         gl.glUniformMatrix4fv(m_MVPLocation, 1, false, m_MatrixStack.parseTopToFloatArray(), 0);
-        
-        gl.glDrawArrays(GL3.GL_TRIANGLE_FAN, 0, m_NbLeafVertices);
+        gl.glDrawArrays(GL3.GL_TRIANGLE_FAN, 0, m_NbLeafPositionVertices);
 	}
 	
 	

@@ -100,12 +100,13 @@ public class JOGLRenderer implements GLEventListener {
 		m_NbLeafVertices = verticesLeafPosition.length/3;
 		
 		float[] verticesLeafColor = new float[] {
-				0.1f, 0.7f, 0.0f,
-				1.5f, 0.8f, 0.1f,
-				0.05f, 0.7f, 0.0f,
-				0.1f, 0.8f, 0.1f
+				-0.5f, 0.5f, 0.0f,
+				0.5f, 0.5f, 0.0f,
+				0.5f, -0.5f, 0.0f,
+				-0.5f, -0.5f, 0.0f
 		};
 		m_VerticesLeafColor = Buffers.newDirectFloatBuffer(verticesLeafColor);
+		m_NbLeafColorVertices = 4;//verticesLeafPosition.length/3;
 		
 		m_MatrixStack = new MatrixStack();
 		m_MVPLocation = gl.glGetUniformLocation(m_ShaderProgram.getProgram(), "uniform_MVP");
@@ -203,29 +204,17 @@ public class JOGLRenderer implements GLEventListener {
 	
 	
 	private void drawPrimitiveTrunk(GL3 gl){
-		
 		gl.glEnableVertexAttribArray(CST.SHADER_POSITION_LOCATION);        
         gl.glVertexAttribPointer(CST.SHADER_POSITION_LOCATION, 3, GL3.GL_FLOAT, false, 0, m_VerticesTrunkPosition);
-        
-        gl.glEnableVertexAttribArray(CST.SHADER_COLOR_LOCATION);        
-        gl.glVertexAttribPointer(CST.SHADER_COLOR_LOCATION, 3, GL3.GL_FLOAT, false, 0, m_VerticesTrunkColor);
-        
         gl.glUniformMatrix4fv(m_MVPLocation, 1, false, m_MatrixStack.parseTopToFloatArray(), 0);
-        
-        gl.glDrawArrays(GL3.GL_LINES, 0, m_NbTrunkVertices);
+        gl.glDrawArrays(GL3.GL_LINES, 0, m_NbTrunkPositionVertices);
 	}
 	
 	private void drawPrimitiveLeaf(GL3 gl){
-		
 		gl.glEnableVertexAttribArray(CST.SHADER_POSITION_LOCATION);        
         gl.glVertexAttribPointer(CST.SHADER_POSITION_LOCATION, 3, GL3.GL_FLOAT, false, 0, m_VerticesLeafPosition);
-        
-        gl.glEnableVertexAttribArray(CST.SHADER_COLOR_LOCATION);        
-        gl.glVertexAttribPointer(CST.SHADER_COLOR_LOCATION, 3, GL3.GL_FLOAT, false, 0, m_VerticesLeafColor);
-        
         gl.glUniformMatrix4fv(m_MVPLocation, 1, false, m_MatrixStack.parseTopToFloatArray(), 0);
-        
-        gl.glDrawArrays(GL3.GL_TRIANGLE_FAN, 0, m_NbLeafVertices);
+        gl.glDrawArrays(GL3.GL_TRIANGLE_FAN, 0, m_NbLeafPositionVertices);
 	}
 	
 	
