@@ -7,7 +7,11 @@ Developped by :
 	Bastien Laby.
 	
 Tutors : 
-	Vincelas Biri (http://igm.univ-mlv.fr/~biri/),
+<<<<<<< HEAD
+	Vencelas Biri (http://igm.univ-mlv.fr/~biri/),
+=======
+	Venceslas Biri (http://igm.univ-mlv.fr/~biri/),
+>>>>>>> a96b3b1f1d6d9e1f93d84b726aa7de583ed5fed2
 	Dominique Revuz (http://www-igm.univ-mlv.fr/~dr/)
 	
 School :
@@ -42,10 +46,16 @@ All library (.so files) are available in "lib/" folders :
 	jdom-2.0.3/lib/
 	
 ======
-Special thanks :
+WORK :
+
+> S1 : Simple tree representation (openGL2-)
+> S2 : Complex tree representation (openGL3+)
+
+======
+SPECIAL THANKS :
 
 	> IMAC Engineering school
-	> Vinceslas Biri
+	> Venceslas Biri
 	> Dominique Revuz
 	> Laurent Noel (http://etudiant.univ-mlv.fr/~lnoel/index.php?page=contact)
 	> Vincent Nozick (http://igm.univ-mlv.fr/~vnozick/?lang=fr)
