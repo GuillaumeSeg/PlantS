@@ -32,10 +32,9 @@ public class MatrixStack {
 		top().mul(mat);
 	}
 	
-	public void scale(float s){
-		Matrix4f rotate = new Matrix4f();
-		rotate.set(s);
-		mult(rotate);
+	public void scale(Vector3f s){
+		Matrix4f scale = new Matrix4f(s.x, 0, 0, 0, 0, s.y, 0, 0, 0, 0, s.z, 0, 0, 0, 0, 1);
+		mult(scale);
 	}
 	
 	public void rotate(Vector3f dir, float angle){
