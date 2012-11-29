@@ -42,7 +42,13 @@ All library (.so files) are available in "lib/" folders :
 	jdom-2.0.3/lib/
 	
 ======
-Special thanks :
+WORK :
+
+> S1 : Simple tree representation (openGL2-)
+> S2 : Complex tree representation (openGL3+)
+
+======
+SPECIAL THANKS :
 
 	> IMAC Engineering school
 	> Vinceslas Biri

@@ -1,0 +1,72 @@
+package openGL3_test2;
+import java.util.Stack;
+
+import javax.vecmath.Matrix3d;
+import javax.vecmath.Matrix4d;
+import javax.vecmath.Vector3d;
+import javax.vecmath.Vector3f;
+
+public class MatrixStack {
+	
+	private Stack<Matrix4d> m_Stack;
+	
+	// créé une matrice à la base de la pile et l'initialise à Identité
+	public MatrixStack() {
+		m_Stack = new Stack<Matrix4d>();
+		m_Stack.push(new Matrix4d());
+		m_Stack.peek().setIdentity();
+	}
+	
+	// Copie la matrice en tête de pile
+	public void push() {
+		m_Stack.push(top());
+	}
+	
+	// Retire la matrice en tête de pile
+	public void pop() {
+		m_Stack.pop();
+	}
+	
+	// renvoie la matrice de tête
+	public Matrix4d top() {
+		return m_Stack.peek();
+	}
+	
+	public void mult(Matrix4d mat){
+		top().mul(mat);
+	}
+
+	// Modifie la matrice en tête de pile
+	public void set(Matrix4d mat){
+		top().set(mat);
+	}
+	
+	// Effectue un scale sur la matrice en tête de pile
+	public void scale(double s){
+		top().setScale(s);
+	}
+	
+	// Effectue une rotation sur la matrice en tête de pile
+	public void rotate(Matrix3d rotate){
+		top().setRotation(rotate);
+	}
+	
+	// Effectue une translation sur la matrice en tête de pile
+	public void translate(Vector3d translate){
+		top().setTranslation(translate);
+	}
+	
+	public static Matrix3d createRotationMatrix(float alpha, Vector3f dir) {
+		return new Matrix3d();
+	}
+	
+	public static Matrix3d createTranslationMatrix(float tx, float ty, float tz) {
+		return new Matrix3d(1, 0, 0, 0, 1, 0, tx, ty, tz);
+	}
+	
+	public static Matrix3d createScaleMatrix(float sx, float sy, float sz) {
+		return new Matrix3d(sx, 0, 0, 0, sy, 0, 0, 0, sz);
+	}
+
+
+}
