@@ -20,3 +20,6 @@ MineMeIfYouCan
 *.pdf
 *~
 
+# Eclipse ressources
+.metadata/
+.metadata/*

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <launchConfiguration type="org.eclipse.jdt.launching.localJavaApplication">
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
-<listEntry value="/S2/src/openGL3/JOGLApp.java"/>
+<listEntry value="/S2/src/renderer/JOGLApp.java"/>
 </listAttribute>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_TYPES">
 <listEntry value="1"/>
 </listAttribute>
-<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="openGL3.JOGLApp"/>
+<stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="renderer.JOGLApp"/>
 <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="S2"/>
 </launchConfiguration>

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="javax.media.opengl.GLEventListener"/>
-<fullyQualifiedTypeName name="javax.media.opengl.GLAutoDrawable"/>
 <fullyQualifiedTypeName name="openGL3_test2.ShaderProgram"/>
 <fullyQualifiedTypeName name="openGL3_test2.JDOMHierarchy"/>
 <fullyQualifiedTypeName name="openGL3_test2.MatrixStack"/>
@@ -9,5 +8,16 @@
 <fullyQualifiedTypeName name="javax.vecmath.Vector3d"/>
 <fullyQualifiedTypeName name="javax.vecmath.Matrix3d"/>
 <fullyQualifiedTypeName name="java.lang.Math"/>
+<fullyQualifiedTypeName name="utils.CST"/>
+<fullyQualifiedTypeName name="javax.media.opengl.GL2"/>
+<fullyQualifiedTypeName name="javax.media.opengl.GL"/>
+<fullyQualifiedTypeName name="javax.media.opengl.GLAutoDrawable"/>
+<fullyQualifiedTypeName name="java.nio.IntBuffer"/>
+<fullyQualifiedTypeName name="javax.media.opengl.GL3"/>
+<fullyQualifiedTypeName name="openGL3.MatrixStack"/>
+<fullyQualifiedTypeName name="java.nio.FloatBuffer"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.jogamp.common.nio.Buffers"/>
 <fullyQualifiedTypeName name="javax.vecmath.Vector3f"/>
+<fullyQualifiedTypeName name="javax.vecmath.Matrix4f"/>
 </qualifiedTypeNameHistroy>
