@@ -5,5 +5,10 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jdom-2.0.3"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jogl-2.0"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/java3d-1.5.2"/>
+	<classpathentry kind="lib" path="/media/DDE-640/IMAC/Projets_Tut/PlantS/libs/jdom-2.0.3/jdom-2.0.3.jar"/>
+	<classpathentry kind="lib" path="/media/DDE-640/IMAC/Projets_Tut/PlantS/libs/java3d/lib/ext/j3dcore.jar"/>
+	<classpathentry kind="lib" path="/media/DDE-640/IMAC/Projets_Tut/PlantS/libs/jogl-2.0/jar/gluegen-rt.jar"/>
+	<classpathentry kind="lib" path="/media/DDE-640/IMAC/Projets_Tut/PlantS/libs/jogl-2.0/jar/jogl-all.jar"/>
+	<classpathentry kind="lib" path="/media/DDE-640/IMAC/Projets_Tut/PlantS/libs/java3d/lib/ext/vecmath.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
