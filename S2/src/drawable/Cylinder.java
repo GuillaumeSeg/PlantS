@@ -62,32 +62,24 @@ public class Cylinder {
             }
         }
         
-        m_Vertices = new ArrayList<VertexShape>(allVertices);
+        m_Vertices = new ArrayList<VertexShape>();
         m_NBvertices = discLat * discHeight * 6; // *6 car 2 triangles
         
         // Construit les vertex finaux en regroupant les données en triangles:
         // Pour une longitude donnée, les deux triangles formant une face sont de la forme:
         // (i, i + 1, i + discLat + 1), (i, i + discLat + 1, i + discLat)        
         
-        /*for(int j = 0; j < discHeight; ++j) {
+        for(int j = 0; j < discHeight; ++j) {
         	int offset = j * discLat;
         	for(int i = 0; i < discLat; ++i) {
-        		
         		m_Vertices.add(new VertexShape(allVertices.get(offset + i)));
-        		System.out.println("1");
-        		m_Vertices.add(new VertexShape(allVertices.get(offset + i + 1)));
-        		System.out.println("2");
-        		m_Vertices.add(new VertexShape(allVertices.get(offset + i + discLat + 1)));
-        		System.out.println("3");
+        		m_Vertices.add(new VertexShape(allVertices.get(offset + (i + 1)%discLat)));
+        		m_Vertices.add(new VertexShape(allVertices.get(offset + discLat + (i + 1)%discLat)));
         		m_Vertices.add(new VertexShape(allVertices.get(offset + i)));
-        		System.out.println("4");
-        		m_Vertices.add(new VertexShape(allVertices.get(offset + i + discLat + 1)));
-        		System.out.println("5");
+        		m_Vertices.add(new VertexShape(allVertices.get(offset + discLat + (i + 1)%discLat)));
         		m_Vertices.add(new VertexShape(allVertices.get(offset + i + discLat)));
-        		System.out.println("6");
             }
-        	System.out.println("hello");
-        }*/
+        }
         
         m_BufferPosition = Buffers.newDirectFloatBuffer(getFloatArray());
         m_BufferColor = Buffers.newDirectFloatBuffer(getColorFloatArray());

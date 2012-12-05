@@ -8,6 +8,7 @@ import java.util.List;
 import javax.media.opengl.GL3;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
+import javax.vecmath.Matrix4f;
 import javax.vecmath.Vector3f;
 
 
@@ -54,14 +55,6 @@ public class JOGLRenderer implements GLEventListener {
 		gl.glClearColor(0.f, 0.f, 0.f, 1.0f);
         gl.glClear(GL3.GL_STENCIL_BUFFER_BIT | GL3.GL_COLOR_BUFFER_BIT | GL3.GL_DEPTH_BUFFER_BIT );
         gl.glUseProgram(m_ShaderProgram.getProgram());
-        
-        
-        
-        m_MatrixStack.push();
-	        Cylinder cylinder = new Cylinder(0.5f, 0.2f, 15 , 15);
-	        gl.glUniformMatrix4fv(m_MVPLocation, 1, false, m_MatrixStack.parseTopToFloatArray(), 0);
-	        cylinder.draw(gl);
-        m_MatrixStack.pop();
 	        
         m_MatrixStack.push();
         	m_MatrixStack.mult(camera.getViewMatrix());
@@ -88,11 +81,11 @@ public class JOGLRenderer implements GLEventListener {
 		
 		float[] verticesRepere = new float[] { 
         		0f, 0f, 0f,
-        		1f, 0f, 0f,
+        		0.5f, 0f, 0f,
         		0f, 0f, 0f,
-        		0f, 1f, 0f,
+        		0f, 0.5f, 0f,
         		0f, 0f, 0f,
-        		0f, 0f, 1f
+        		0f, 0f, 0.5f
          };		
 		m_VerticesRepere = Buffers.newDirectFloatBuffer(verticesRepere);
 		m_NbRepereVertices = verticesRepere.length/3;
@@ -191,6 +184,10 @@ public class JOGLRenderer implements GLEventListener {
 				m_MatrixStack.rotate(v, 45);
 
 				draw(element, gl);
+				
+				Cylinder cylinder = new Cylinder(height, height*0.1f, 15, 15);
+		        gl.glUniformMatrix4fv(m_MVPLocation, 1, false, m_MatrixStack.parseTopToFloatArray(), 0);
+		        cylinder.draw(gl);
 				
 				m_MatrixStack.translate(new Vector3f(0f, height, 0f));
 					
