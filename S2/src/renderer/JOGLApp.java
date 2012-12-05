@@ -9,7 +9,7 @@ public class JOGLApp {
 	}
 	
 	public static void main(String[] args){
-		JOGLApp application = new JOGLApp("testOpenGL3");
+		JOGLApp application = new JOGLApp("Complex tree with cylinders");
 	}
 	
 }

@@ -7,6 +7,7 @@ import javax.vecmath.Vector3f;
 public class MatrixStack {
 	
 	private Stack<Matrix4f> m_Stack;
+	public static int s_Count = 0;
 	
 	public MatrixStack() {
 		m_Stack = new Stack<Matrix4f>();
@@ -18,10 +19,12 @@ public class MatrixStack {
 	public void push() {
 		Matrix4f m = new Matrix4f(top());
 		m_Stack.push(m);
+		s_Count ++;
 	}
 	
 	public void pop() {
 		m_Stack.pop();
+		s_Count --;
 	}
 	
 	public Matrix4f top() {

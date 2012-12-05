@@ -1,7 +1,5 @@
 package renderer;
 
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.File;
 import java.nio.FloatBuffer;
 import java.util.Iterator;
@@ -10,7 +8,6 @@ import java.util.List;
 import javax.media.opengl.GL3;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
-import javax.vecmath.Matrix4f;
 import javax.vecmath.Vector3f;
 
 
@@ -21,6 +18,11 @@ import utils.CST;
 import camera.FreeFlyCamera;
 
 import com.jogamp.common.nio.Buffers;
+import com.jogamp.graph.geom.Vertex;
+
+import drawable.Cylinder;
+import drawable.Square;
+import drawable.VertexShape;
 
 public class JOGLRenderer implements GLEventListener {
 	
@@ -53,16 +55,20 @@ public class JOGLRenderer implements GLEventListener {
         gl.glClear(GL3.GL_STENCIL_BUFFER_BIT | GL3.GL_COLOR_BUFFER_BIT | GL3.GL_DEPTH_BUFFER_BIT );
         gl.glUseProgram(m_ShaderProgram.getProgram());
         
+        
+        
         m_MatrixStack.push();
-        	camera.moveLeft(distance);
-        	m_MatrixStack.mult(camera.getViewMatrix());
-        		m_MatrixStack.push();
-		        	m_MatrixStack.rotate(new Vector3f(0f, 1f, 0f), angle);
-		        	drawJDOM(m_TreeHierarchy.getRoot(), gl);
-		        m_MatrixStack.pop();
+	        Cylinder cylinder = new Cylinder(0.5f, 0.2f, 15 , 15);
+	        gl.glUniformMatrix4fv(m_MVPLocation, 1, false, m_MatrixStack.parseTopToFloatArray(), 0);
+	        cylinder.draw(gl);
         m_MatrixStack.pop();
-        
-        
+	        
+        m_MatrixStack.push();
+        	m_MatrixStack.mult(camera.getViewMatrix());
+    		m_MatrixStack.push();
+	        	drawJDOM(m_TreeHierarchy.getRoot(), gl);
+	        m_MatrixStack.pop();
+        m_MatrixStack.pop();
         
 	}
 
@@ -125,6 +131,7 @@ public class JOGLRenderer implements GLEventListener {
 		m_MVPLocation = gl.glGetUniformLocation(m_ShaderProgram.getProgram(), "uniform_MVP");
 		
 		camera = new FreeFlyCamera();
+
 	}
 
 	public void reshape(GLAutoDrawable drawable, int arg1, int arg2, int arg3, int arg4) {
@@ -148,7 +155,7 @@ public class JOGLRenderer implements GLEventListener {
 		if(element.getName() == "trunck"){
 			
 			m_MatrixStack.push();
-				
+		            
 				float height = Float.parseFloat(element.getAttributeValue("height"));
 				
 				String axeXYZ = element.getAttributeValue("axe");
@@ -182,14 +189,14 @@ public class JOGLRenderer implements GLEventListener {
 				
 				Matrix4f Mrotate = new Matrix4f(u.x, u.y, u.z, 0f, v.x, v.y, v.z, 0f, w.x, w.y, w.z, 0f, 0f, 0f, 0f, 1f);*/
 				m_MatrixStack.rotate(v, 45);
-				
+
 				draw(element, gl);
 				
 				m_MatrixStack.translate(new Vector3f(0f, height, 0f));
 					
 				if(!element.getChildren().isEmpty()){
 					List<Element> childrenList = element.getChildren();
-					Iterator itChildren = childrenList.iterator();
+					Iterator<Element> itChildren = childrenList.iterator();
 					while(itChildren.hasNext()){
 						Element child = (Element)itChildren.next();
 						drawJDOM(child, gl);
@@ -203,8 +210,8 @@ public class JOGLRenderer implements GLEventListener {
 			draw(element, gl);
 			
 			if(!element.getChildren().isEmpty()){
-				List childrenList = element.getChildren();
-				Iterator itChildren = childrenList.iterator();
+				List<Element> childrenList = element.getChildren();
+				Iterator<Element> itChildren = childrenList.iterator();
 				while(itChildren.hasNext()){
 					Element child = (Element)itChildren.next();
 					drawJDOM(child, gl);
@@ -224,6 +231,9 @@ public class JOGLRenderer implements GLEventListener {
 			m_MatrixStack.push();
 				m_MatrixStack.scale(new Vector3f(1f, height, 1f));
 				drawPrimitiveTrunk(gl);
+				/*Cylinder cylinder = new Cylinder(1f, 0.05f, 30 , 30);
+		        gl.glUniformMatrix4fv(m_MVPLocation, 1, false, m_MatrixStack.parseTopToFloatArray(), 0);
+		        cylinder.draw(gl);*/
 			m_MatrixStack.pop();
 		}
 		
@@ -250,8 +260,11 @@ public class JOGLRenderer implements GLEventListener {
         gl.glVertexAttribPointer(CST.SHADER_COLOR_LOCATION, 3, GL3.GL_FLOAT, false, 0, m_VerticesTrunkColor);
         
         gl.glUniformMatrix4fv(m_MVPLocation, 1, false, m_MatrixStack.parseTopToFloatArray(), 0);
-        
         gl.glDrawArrays(GL3.GL_LINES, 0, m_NbTrunkVertices);
+        
+        gl.glDisableVertexAttribArray(CST.SHADER_POSITION_LOCATION); // Allow release of vertex position memory
+        gl.glDisableVertexAttribArray(CST.SHADER_COLOR_LOCATION); // Allow release of vertex color memory
+        
 	}
 	
 	private void drawPrimitiveLeaf(GL3 gl){
@@ -263,8 +276,10 @@ public class JOGLRenderer implements GLEventListener {
         gl.glVertexAttribPointer(CST.SHADER_COLOR_LOCATION, 3, GL3.GL_FLOAT, false, 0, m_VerticesLeafColor);
         
         gl.glUniformMatrix4fv(m_MVPLocation, 1, false, m_MatrixStack.parseTopToFloatArray(), 0);
-        
         gl.glDrawArrays(GL3.GL_TRIANGLE_FAN, 0, m_NbLeafVertices);
+        
+        gl.glDisableVertexAttribArray(CST.SHADER_POSITION_LOCATION); // Allow release of vertex position memory
+        gl.glDisableVertexAttribArray(CST.SHADER_COLOR_LOCATION); // Allow release of vertex color memory
 	}
 
 }

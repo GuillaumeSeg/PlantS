@@ -1,4 +1,6 @@
-<<<<<<< HEAD
+=\=\=\=\=\=\=
+<<<<<<<=HEAD
+>>>>>>>=2641e5688fab366be06072345f4269143642186d
 AbstractTextEditor.Color.Background=30,30,30
 AbstractTextEditor.Color.Background.SystemDefault=false
 AbstractTextEditor.Color.FindScope=17,17,17
@@ -25,8 +27,5 @@ printMarginColor=208,208,208
 pydevOccurrenceIndicationColor=0,0,0
 searchResultIndicationColor=0,0,0
 secondaryIPColor=42,42,42
+spellingIndication=false
 writeOccurrenceIndicationColor=0,0,0
-=======
-eclipse.preferences.version=1
-overviewRuler_migration=migrated_3.1
->>>>>>> 2641e5688fab366be06072345f4269143642186d
