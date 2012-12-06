@@ -8,7 +8,6 @@ import java.util.List;
 import javax.media.opengl.GL3;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
-import javax.vecmath.Matrix4f;
 import javax.vecmath.Vector3f;
 
 
@@ -19,11 +18,8 @@ import utils.CST;
 import camera.FreeFlyCamera;
 
 import com.jogamp.common.nio.Buffers;
-import com.jogamp.graph.geom.Vertex;
 
 import drawable.Cylinder;
-import drawable.Square;
-import drawable.VertexShape;
 
 public class JOGLRenderer implements GLEventListener {
 	
@@ -57,6 +53,8 @@ public class JOGLRenderer implements GLEventListener {
         gl.glUseProgram(m_ShaderProgram.getProgram());
 	        
         m_MatrixStack.push();
+        	m_MatrixStack.rotate(new Vector3f(0f, 1f, 0f), angle);
+        	angle++;
         	m_MatrixStack.mult(camera.getViewMatrix());
     		m_MatrixStack.push();
 	        	drawJDOM(m_TreeHierarchy.getRoot(), gl);
@@ -183,7 +181,7 @@ public class JOGLRenderer implements GLEventListener {
 				Matrix4f Mrotate = new Matrix4f(u.x, u.y, u.z, 0f, v.x, v.y, v.z, 0f, w.x, w.y, w.z, 0f, 0f, 0f, 0f, 1f);
 				m_MatrixStack.rotate(Mrotate);
 
-				draw(element, gl);
+				//draw(element, gl);
 				
 				Cylinder cylinder = new Cylinder(height, height*0.1f, 15, 15);
 		        gl.glUniformMatrix4fv(m_MVPLocation, 1, false, m_MatrixStack.parseTopToFloatArray(), 0);
@@ -204,7 +202,7 @@ public class JOGLRenderer implements GLEventListener {
 			
 		}else{
 			
-			draw(element, gl);
+			//draw(element, gl);
 			
 			if(!element.getChildren().isEmpty()){
 				List<Element> childrenList = element.getChildren();
@@ -228,9 +226,6 @@ public class JOGLRenderer implements GLEventListener {
 			m_MatrixStack.push();
 				m_MatrixStack.scale(new Vector3f(1f, height, 1f));
 				drawPrimitiveTrunk(gl);
-				/*Cylinder cylinder = new Cylinder(1f, 0.05f, 30 , 30);
-		        gl.glUniformMatrix4fv(m_MVPLocation, 1, false, m_MatrixStack.parseTopToFloatArray(), 0);
-		        cylinder.draw(gl);*/
 			m_MatrixStack.pop();
 		}
 		

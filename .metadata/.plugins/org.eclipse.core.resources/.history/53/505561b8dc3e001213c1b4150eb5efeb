@@ -1,0 +1,26 @@
+package drawable;
+
+import javax.vecmath.Vector2f;
+import javax.vecmath.Vector3f;
+
+public class VertexShape {
+	
+	public static int s_NB_COMPONENTS_POSITION = 3;
+	
+	public Vector3f m_Position;
+	public Vector3f m_Normal;
+	public Vector2f m_TexCoord;
+	
+	public VertexShape() {
+		m_Position = new Vector3f(0f, 0f, 0f);
+	}
+	
+	public VertexShape(float x, float y, float z) {
+		m_Position = new Vector3f(x, y, z);
+	}
+	
+	public Vector3f getPosition() {
+		return m_Position;
+	}
+	
+}

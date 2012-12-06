@@ -1,9 +1,5 @@
 package renderer;
 import java.io.File;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.media.opengl.GL2;
 
 import org.jdom2.Element;
 import org.jdom2.input.SAXBuilder;

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
+<<<<<<< HEAD
 	<section name="org.eclipse.ui.internal.QuickAccess">
 		<item value="853" key="dialogWidth"/>
 		<item value="480" key="dialogHeight"/>
@@ -10,6 +11,16 @@
 		<list key="orderedElements">
 		</list>
 		<list key="textEntries">
+=======
+	<section name="WorkbenchPreferenceDialogSettings">
+		<item value="40" key="DIALOG_Y_ORIGIN"/>
+		<item value="656" key="DIALOG_X_ORIGIN"/>
+	</section>
+	<section name="NewWizardAction">
+		<item value="org.eclipse.ui.wizards.new.file" key="NewWizardSelectionPage.STORE_SELECTED_ID"/>
+		<list key="NewWizardSelectionPage.STORE_EXPANDED_CATEGORIES_ID">
+			<item value="org.eclipse.ui.Basic"/>
+>>>>>>> 4ba9078b66720f33e48ae9a624bd6d4de61176f8
 		</list>
 	</section>
 	<section name="WorkbenchPreferenceDialogSettings">

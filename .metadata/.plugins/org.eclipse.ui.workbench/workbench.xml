@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="14" version="2.0">
 <workbenchAdvisor/>
-<window height="922" maximized="true" width="809" x="66" y="24">
+<window height="922" maximized="true" width="809" x="65" y="24">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -18,7 +18,7 @@
 <coolItem id="org.eclipse.ui.workbench.navigate" itemType="typeToolBarContribution" x="184" y="30"/>
 <coolItem id="group.editor" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.jdt.ui.ClassFileEditor" itemType="typePlaceholder" x="-1" y="-1"/>
-<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
+<coolItem id="org.eclipse.ui.DefaultTextEditor" itemType="typePlaceholder" x="-1" y="-1"/>
 <coolItem id="org.eclipse.jdt.ui.CompilationUnitEditor" itemType="typeToolBarContribution" x="-1" y="-1"/>
 <coolItem id="group.help" itemType="typeGroupMarker"/>
 <coolItem id="org.eclipse.ui.workbench.help" itemType="typeToolBarContribution" x="-1" y="-1"/>
@@ -30,32 +30,12 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
-<part id="2"/>
-<part id="3"/>
-<part id="4"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLRenderer.java" partName="JOGLRenderer.java" path="/home/bastien/PlantS/S2/src/renderer/JOGLRenderer.java" title="JOGLRenderer.java" tooltip="S2/src/renderer/JOGLRenderer.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S2/src/renderer/JOGLRenderer.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="2387" selectionTopPixel="1268"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Cylinder.java" partName="Cylinder.java" path="/home/bastien/PlantS/S2/src/drawable/Cylinder.java" title="Cylinder.java" tooltip="S2/src/drawable/Cylinder.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S2/src/drawable/Cylinder.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="412" selectionTopPixel="228"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLApp.java" partName="JOGLApp.java" path="/home/bastien/PlantS/S2/src/renderer/JOGLApp.java" title="JOGLApp.java" tooltip="S2/src/renderer/JOGLApp.java" workbook="DefaultEditorWorkbook">
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLApp.java" partName="JOGLApp.java" path="/home/bastien/PlantS/S2/src/renderer/JOGLApp.java" title="JOGLApp.java" tooltip="S2/src/renderer/JOGLApp.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S2/src/renderer/JOGLApp.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="65" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.ui.DefaultTextEditor" name="xml_tree.xml" partName="xml_tree.xml" path="/home/bastien/PlantS/S2/src/xml/xml_tree.xml" title="xml_tree.xml" tooltip="S2/src/xml/xml_tree.xml" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S2/src/xml/xml_tree.xml"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1073" selectionTopPixel="0"/>
-</editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MatrixStack.java" partName="MatrixStack.java" path="/home/bastien/PlantS/S2/src/renderer/MatrixStack.java" title="MatrixStack.java" tooltip="S2/src/renderer/MatrixStack.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/S2/src/renderer/MatrixStack.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
 </editors>
@@ -75,9 +55,8 @@
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
 <expanded>
-<category IMemento.internal.id="Warnings (23 items)"/>
-<category IMemento.internal.id="Warnings"/>
 <category IMemento.internal.id="Errors"/>
+<category IMemento.internal.id="Warnings"/>
 </expanded>
 <columnWidths org.eclipse.ui.ide.locationField="105" org.eclipse.ui.ide.markerType="481" org.eclipse.ui.ide.pathField="140" org.eclipse.ui.ide.resourceField="105" org.eclipse.ui.ide.severityAndDescriptionField="350"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
@@ -282,7 +261,7 @@
 </folder>
 </info>
 <info part="org.eclipse.ui.editorss" ratio="0.14276809" ratioLeft="229" ratioRight="1375" relationship="2" relative="left"/>
-<info folder="true" part="bottom" ratio="0.65609753" ratioLeft="538" ratioRight="282" relationship="4" relative="org.eclipse.ui.editorss">
+<info folder="true" part="bottom" ratio="0.5804878" ratioLeft="476" ratioRight="344" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
 <page content="org.eclipse.jdt.ui.JavadocView" label="Javadoc"/>
@@ -314,164 +293,93 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/S2/src/xml/xml_tree.xml"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/S2/src/drawable/Cylinder.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/S2/src/openGL3/testMatrix.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/S2/src/openGL3/ShaderProgram.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/S2/src/renderer/JOGLRenderer.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/S2/src/renderer/JDOMHierarchy.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/S2/src/renderer/JOGLApp.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/S2/src/drawable/Vertex.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/S2/src/renderer/MatrixStack.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/S2/src/renderer/JOGLRenderer.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/S2/src/renderer/JOGLWindow.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/S2/src/renderer/ShaderProgram.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/S2/src/drawable/Cylinder.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/S2/src/xml/real_tree.xml"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/S2/src/xml/tree-2.0"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" path="/S2/src/xml/tree-2.0.xml"/>
 </editors>
-<item historyLabel="Cylinder.java" index="1">
+<item historyLabel="JDOMHierarchy.java" index="0">
+<position info="not_deleted" x="38" y="0"/>
+</item>
+<item historyLabel="JOGLApp.java" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="testMatrix.java" index="2">
+<item historyLabel="JDOMHierarchy.java" index="0">
+<position info="not_deleted" x="38" y="0"/>
+</item>
+<item historyLabel="JOGLRenderer.java" index="2">
 <position/>
 </item>
-<item historyLabel="Cylinder.java" index="1">
+<item historyLabel="JDOMHierarchy.java" index="0">
+<position info="not_deleted" x="38" y="0"/>
+</item>
+<item historyLabel="JOGLWindow.java" index="3">
+<position info="not_deleted" x="17" y="0"/>
+</item>
+<item historyLabel="ShaderProgram.java" index="4">
+<position/>
+</item>
+<item historyLabel="JOGLWindow.java" index="3">
+<position info="not_deleted" x="17" y="0"/>
+</item>
+<item historyLabel="JDOMHierarchy.java" index="0">
+<position info="not_deleted" x="38" y="0"/>
+</item>
+<item historyLabel="Cylinder.java" index="5">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="ShaderProgram.java" index="3">
+<item historyLabel="JDOMHierarchy.java" index="0">
+<position info="not_deleted" x="38" y="0"/>
+</item>
+<item historyLabel="ShaderProgram.java" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Cylinder.java" index="1">
+<item historyLabel="JOGLApp.java" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="testMatrix.java" index="2">
+<item historyLabel="ShaderProgram.java" index="4">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Cylinder.java" index="1">
+<item historyLabel="JOGLApp.java" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="502" y="0"/>
-</item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="503" y="0"/>
-</item>
-<item historyLabel="JOGLApp.java" index="5">
-<position info="not_deleted" x="65" y="0"/>
-</item>
-<item historyLabel="xml_tree.xml" index="0">
-<position info="not_deleted" x="583" y="0"/>
-</item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="503" y="0"/>
-</item>
-<item historyLabel="xml_tree.xml" index="0">
-<position info="not_deleted" x="1097" y="0"/>
-</item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="1574" y="0"/>
-</item>
-<item historyLabel="xml_tree.xml" index="0">
-<position info="not_deleted" x="1082" y="0"/>
-</item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="1574" y="0"/>
-</item>
-<item historyLabel="xml_tree.xml" index="0">
-<position info="not_deleted" x="1073" y="0"/>
-</item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="1574" y="0"/>
-</item>
-<item historyLabel="Cylinder.java" index="1">
-<position info="not_deleted" x="654" y="0"/>
-</item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="1574" y="0"/>
-</item>
-<item historyLabel="Cylinder.java" index="1">
-<position info="not_deleted" x="654" y="0"/>
-</item>
-<item historyLabel="Cylinder.java" index="1">
-<position info="not_deleted" x="297" y="0"/>
-</item>
-<item historyLabel="Cylinder.java" index="1">
-<position info="not_deleted" x="412" y="0"/>
-</item>
-<item historyLabel="Vertex.java" index="6">
-<position info="not_deleted" x="406" y="0"/>
-</item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="1574" y="0"/>
-</item>
-<item historyLabel="Vertex.java" index="6">
-<position info="not_deleted" x="406" y="0"/>
-</item>
-<item historyLabel="Vertex.java" index="6">
-<position info="not_deleted" x="185" y="0"/>
-</item>
-<item historyLabel="Vertex.java" index="6">
-<position info="not_deleted" x="115" y="8"/>
-</item>
-<item historyLabel="Vertex.java" index="6">
-<position info="not_deleted" x="173" y="8"/>
-</item>
-<item historyLabel="Vertex.java" index="6">
-<position info="not_deleted" x="211" y="0"/>
-</item>
-<item historyLabel="Vertex.java" index="6">
-<position info="not_deleted" x="255" y="0"/>
-</item>
-<item historyLabel="Vertex.java" index="6">
-<position info="not_deleted" x="406" y="0"/>
-</item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="1574" y="0"/>
-</item>
-<item historyLabel="MatrixStack.java" index="7">
+<item historyLabel="JOGLRenderer.java" index="2">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="1574" y="0"/>
+<item historyLabel="JOGLRenderer.java" index="2">
+<position info="not_deleted" x="1264" y="0"/>
 </item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="235" y="0"/>
+<item historyLabel="JOGLRenderer.java" index="2">
+<position info="not_deleted" x="1268" y="0"/>
 </item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="5818" y="0"/>
+<item historyLabel="JOGLRenderer.java" index="2">
+<position info="not_deleted" x="1272" y="0"/>
 </item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="5882" y="0"/>
+<item historyLabel="JOGLRenderer.java" index="2">
+<position info="not_deleted" x="1273" y="0"/>
 </item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="5861" y="17"/>
+<item historyLabel="JOGLRenderer.java" index="2">
+<position info="not_deleted" x="6736" y="0"/>
 </item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="5800" y="0"/>
+<item historyLabel="real_tree.xml" index="6">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Cylinder.java" index="1">
-<position info="not_deleted" x="412" y="0"/>
+<item historyLabel="tree-2.0" index="7">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="5800" y="0"/>
+<item historyLabel="tree-2.0.xml" index="8">
+<position info="not_deleted" x="683" y="0"/>
 </item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="2131" y="0"/>
+<item historyLabel="JOGLRenderer.java" index="2">
+<position info="not_deleted" x="6736" y="0"/>
 </item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="1979" y="0"/>
-</item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="2005" y="0"/>
-</item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="2120" y="0"/>
-</item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="1993" y="6"/>
-</item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="2120" y="0"/>
-</item>
-<item historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="1993" y="11"/>
-</item>
-<item active="true" historyLabel="JOGLRenderer.java" index="4">
-<position info="not_deleted" x="2131" y="0"/>
+<item active="true" historyLabel="JOGLApp.java" index="1">
+<position info="not_deleted" x="0" y="0"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -490,8 +398,41 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="real_tree.xml" tooltip="S2/src/xml/real_tree.xml">
+<persistable path="/S2/src/xml/real_tree.xml"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLRenderer.java" tooltip="S2/src/renderer/JOGLRenderer.java">
+<persistable path="/S2/src/renderer/JOGLRenderer.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLApp.java" tooltip="S2/src/renderer/JOGLApp.java">
+<persistable path="/S2/src/renderer/JOGLApp.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ShaderProgram.java" tooltip="S2/src/renderer/ShaderProgram.java">
+<persistable path="/S2/src/renderer/ShaderProgram.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Cylinder.java" tooltip="S2/src/drawable/Cylinder.java">
+<persistable path="/S2/src/drawable/Cylinder.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLWindow.java" tooltip="S2/src/renderer/JOGLWindow.java">
+<persistable path="/S2/src/renderer/JOGLWindow.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JDOMHierarchy.java" tooltip="S2/src/renderer/JDOMHierarchy.java">
+<persistable path="/S2/src/renderer/JDOMHierarchy.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="color.fs.glsl" tooltip="S2/src/shaders/color.fs.glsl">
+<persistable path="/S2/src/shaders/color.fs.glsl"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="color.vs.glsl" tooltip="S2/src/shaders/color.vs.glsl">
+<persistable path="/S2/src/shaders/color.vs.glsl"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MatrixStack.java" tooltip="S2/src/renderer/MatrixStack.java">
 <persistable path="/S2/src/renderer/MatrixStack.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Square.java" tooltip="S2/src/drawable/Square.java">
+<persistable path="/S2/src/drawable/Square.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="VertexShape.java" tooltip="S2/src/drawable/VertexShape.java">
+<persistable path="/S2/src/drawable/VertexShape.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Vertex.java" tooltip="S2/src/drawable/Vertex.java">
 <persistable path="/S2/src/drawable/Vertex.java"/>
@@ -499,41 +440,8 @@
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="xml_tree.xml" tooltip="S2/src/xml/xml_tree.xml">
 <persistable path="/S2/src/xml/xml_tree.xml"/>
 </file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLApp.java" tooltip="S2/src/renderer/JOGLApp.java">
-<persistable path="/S2/src/renderer/JOGLApp.java"/>
-</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="testMatrix.java" tooltip="S2/src/openGL3/testMatrix.java">
 <persistable path="/S2/src/openGL3/testMatrix.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="ShaderProgram.java" tooltip="S2/src/openGL3/ShaderProgram.java">
-<persistable path="/S2/src/openGL3/ShaderProgram.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Cylinder.java" tooltip="S2/src/drawable/Cylinder.java">
-<persistable path="/S2/src/drawable/Cylinder.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLWindow.java" tooltip="S2/src/openGL3/JOGLWindow.java">
-<persistable path="/S2/src/openGL3/JOGLWindow.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLApp.java" tooltip="S2/src/openGL3/JOGLApp.java">
-<persistable path="/S2/src/openGL3/JOGLApp.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="MatrixStack.java" tooltip="S2/src/openGL3/MatrixStack.java">
-<persistable path="/S2/src/openGL3/MatrixStack.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JOGLRenderer.java" tooltip="S2/src/openGL3/JOGLRenderer.java">
-<persistable path="/S2/src/openGL3/JOGLRenderer.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="FreeFlyCamera.java" tooltip="S2/src/openGL3/camera/FreeFlyCamera.java">
-<persistable path="/S2/src/openGL3/camera/FreeFlyCamera.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TrackBallCamera.java" tooltip="S2/src/openGL3/camera/TrackBallCamera.java">
-<persistable path="/S2/src/openGL3/camera/TrackBallCamera.java"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.ui.DefaultTextEditor" name="Copy of xml_tree.xml" tooltip="S2/src/xml/Copy of xml_tree.xml">
-<persistable path="/S2/src/xml/Copy of xml_tree.xml"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="JDOMHierarchy.java" tooltip="S2/src/openGL3/JDOMHierarchy.java">
-<persistable path="/S2/src/openGL3/JDOMHierarchy.java"/>
 </file>
 </mruList>
 </workbench>
