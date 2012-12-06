@@ -8,6 +8,7 @@ import java.util.List;
 import javax.media.opengl.GL3;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
+import javax.vecmath.Matrix4f;
 import javax.vecmath.Vector3f;
 
 
@@ -53,10 +54,12 @@ public class JOGLRenderer implements GLEventListener {
         gl.glUseProgram(m_ShaderProgram.getProgram());
 	        
         m_MatrixStack.push();
+        	m_MatrixStack.scale(new Vector3f(2.0f,2.0f,2.0f));
         	m_MatrixStack.rotate(new Vector3f(0f, 1f, 0f), angle);
         	angle++;
+        	
         	m_MatrixStack.mult(camera.getViewMatrix());
-    		m_MatrixStack.push();
+        	m_MatrixStack.push();
 	        	drawJDOM(m_TreeHierarchy.getRoot(), gl);
 	        m_MatrixStack.pop();
         m_MatrixStack.pop();
@@ -160,23 +163,24 @@ public class JOGLRenderer implements GLEventListener {
 				v.normalize();
 				
 				Vector3f uPrim = new Vector3f();
-				boolean acceptable = false;
-				while(!acceptable) {
-					uPrim.x = (float) Math.random();
-					uPrim.y = (float) Math.random();
-					uPrim.z = (float) Math.random();
+					uPrim.x = 1.0f;
+					uPrim.y = 0.0f;
+					uPrim.z = 0.0f;
 					uPrim.normalize();
-					System.out.println(uPrim.dot(v));
-					if(Math.abs(uPrim.dot(v)) > 0.5) {
-						acceptable = true;
+					if(Math.abs(uPrim.dot(v)) == 0) {
+						uPrim.x = 0.0f;
+						uPrim.y = 0.0f;
+						uPrim.z = 1.0f;
+						uPrim.normalize();
 					}
-				}
 				
 				Vector3f w = new Vector3f();
 				w.cross(uPrim, v);
+				w.normalize();
 				
 				Vector3f u = new Vector3f();
 				u.cross(v, w);
+				u.normalize();
 				
 				Matrix4f Mrotate = new Matrix4f(u.x, u.y, u.z, 0f, v.x, v.y, v.z, 0f, w.x, w.y, w.z, 0f, 0f, 0f, 0f, 1f);
 				m_MatrixStack.rotate(Mrotate);
