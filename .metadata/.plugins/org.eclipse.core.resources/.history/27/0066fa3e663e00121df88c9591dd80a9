@@ -1,0 +1,9 @@
+package drawable;
+
+public class Vertex {
+	
+	private Vector3f position;
+	private Vector3f normal;
+	private Vector2f texCoord;
+	
+}

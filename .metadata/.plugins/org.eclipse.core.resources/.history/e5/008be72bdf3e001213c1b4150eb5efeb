@@ -1,0 +1,38 @@
+package drawable;
+
+import java.util.ArrayList;
+
+import javax.media.opengl.GL3;
+
+public class Square {
+
+	private ArrayList<VertexShape> m_Vertices;
+	private static int s_NBvertices = 4;
+	private static int s_DrawingMode = GL3.GL_TRIANGLE_FAN;
+	
+	public Square() {
+		m_Vertices = new ArrayList<VertexShape>();
+		m_Vertices.add(new VertexShape(-0.5f, 0.5f, 0.0f));
+		m_Vertices.add(new VertexShape(0.5f, 0.5f, 0.0f));
+		m_Vertices.add(new VertexShape(0.5f, -0.5f, 0.0f));
+		m_Vertices.add(new VertexShape(-0.5f, -0.5f, 0.0f));
+	}
+	
+	public float[] getFloatArray() {
+		float[] vertices = new float[s_NBvertices * VertexShape.s_NB_COMPONENTS_POSITION];
+		int i = 0;
+		for(VertexShape v : m_Vertices) {
+			vertices[i] = m_Vertices[i];
+		}
+		return vertices;
+	}
+	
+	public int getNBvertices() {
+		return s_NBvertices;
+	}
+	
+	public int getDrawingMode() {
+		return s_DrawingMode;
+	}
+	
+}

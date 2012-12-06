@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import javax.media.opengl.GL2ES2;
-import javax.media.opengl.GL3;
 import javax.media.opengl.GLAutoDrawable;
 
 
