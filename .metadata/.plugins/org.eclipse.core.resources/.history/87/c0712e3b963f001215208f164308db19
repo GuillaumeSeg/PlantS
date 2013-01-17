@@ -1,0 +1,12 @@
+<arbre>
+    <trunc length="0.5" ldiamb="" sdiamb="" ldiamt="" sdiamt="" axe="0 1 0">
+    	    <trunc length="0.25" ldiamb="" sdiamb="" ldiamt="" sdiamt="" axe="0.5 0.5 0">
+    	    	<trunc length="0.15" ldiamb="" sdiamb="" ldiamt="" sdiamt="" axe="0.5 0.5 0"></trunc>
+    	    	<trunc length="0.25" ldiamb="" sdiamb="" ldiamt="" sdiamt="" axe="-0.5 0.5 0"></trunc>
+    	    </trunc>
+    	    <trunc length="0.25" ldiamb="" sdiamb="" ldiamt="" sdiamt="" axe="0.5 0.5 0">
+    	    	<trunc length="0.15" ldiamb="" sdiamb="" ldiamt="" sdiamt="" axe="0.5 0.5 0"></trunc>
+    	    	<trunc length="0.25" ldiamb="" sdiamb="" ldiamt="" sdiamt="" axe="-0.5 0.5 0"></trunc>
+    	    </trunc>    	    
+	</trunc>
+</arbre>

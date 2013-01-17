@@ -1,0 +1,23 @@
+package drawable;
+
+import java.awt.List;
+import java.util.ArrayList;
+
+public class Square {
+
+	private ArrayList<VertexShape> vertices;
+	private static s_NBvertices;
+	
+	public Square() {
+		vertices = new ArrayList<VertexShape>();
+		vertices.add(new VertexShape(-0.5f, 0.5f, 0.0f));
+		vertices.add(new VertexShape(0.5f, 0.5f, 0.0f));
+		vertices.add(new VertexShape(0.5f, -0.5f, 0.0f));
+		vertices.add(new VertexShape(-0.5f, -0.5f, 0.0f));
+	}
+	
+	public float[] getFloatArray() {
+		return null;
+	}
+	
+}
