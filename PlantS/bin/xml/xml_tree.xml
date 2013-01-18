@@ -1,0 +1,40 @@
+<arbre>
+	<trunck height="0.3" axe="0 1 0">
+		<trunck height="0.2" axe="0.5 0.5 0">
+			<trunck height="0.15" axe="0.5 0.5 0">
+				<trunck height="0.1" axe="0.5 0.5 0">
+					<leaf size = "0.02"></leaf>
+				</trunck>
+				<trunck height="0.1" axe="-0.5 0.5 0">
+					<leaf size = "0.03"></leaf>
+				</trunck>
+			</trunck>
+			<trunck height="0.15" axe="-0.5 0.5 0">
+				<trunck height="0.1" axe="0.5 0.5 0">
+					<leaf size = "0.03"></leaf>
+				</trunck>
+				<trunck height="0.1" axe="-0.5 0.5 0">
+					<leaf size = "0.025"></leaf>
+				</trunck>
+			</trunck>
+		</trunck>
+		<trunck height="0.2" axe="-0.5 0.5 0">
+			<trunck height="0.15" axe="0.5 0.5 0">
+				<trunck height="0.1" axe="0.5 0.5 0">
+					<leaf size = "0.02"></leaf>
+				</trunck>
+				<trunck height="0.1" axe="-0.5 0.5 0">
+					<leaf size = "0.025"></leaf>
+				</trunck>
+			</trunck>
+			<trunck height="0.15" axe="-0.5 0.5 0">
+				<trunck height="0.1" axe="0.5 0.5 0">
+					<leaf size = "0.03"></leaf>
+				</trunck>
+				<trunck height="0.1" axe="-0.5 0.5 0">
+					<leaf size = "0.02"></leaf>
+				</trunck>
+			</trunck>
+		</trunck>	
+	</trunck>
+</arbre>
