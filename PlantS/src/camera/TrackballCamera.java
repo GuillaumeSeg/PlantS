@@ -2,6 +2,7 @@ package camera;
 
 import javax.vecmath.Matrix4f;
 import javax.vecmath.Vector3f;
+import javax.vecmath.Vector4f;
 
 import matrix.GLMatrixTransform;
 
@@ -13,7 +14,7 @@ public class TrackballCamera {
 	private Vector3f m_fTarget;
 	
 	public TrackballCamera() {
-		m_fDistance = 0.0f;
+		m_fDistance = -1.0f;
 		m_fAngleX = 0.0f;
 		m_fAngleY = 0.0f;
 		m_fTarget = new Vector3f(0.0f, 0.0f, 0.0f);
@@ -43,12 +44,36 @@ public class TrackballCamera {
 	public Matrix4f getViewMatrix() {
 		
 		Matrix4f V = new Matrix4f();
-		V = GLMatrixTransform.LookAt(new Vector3f(0.0f, 0.0f, m_fDistance), m_fTarget, new Vector3f(0.0f, 1.0f, 0.0f));
-		//System.err.println(m_fTarget.toString());
-		//V.rotX(m_fAngleX);
-		//V.rotY(m_fAngleY);
+		V = GLMatrixTransform.LookAt(new Vector3f(0.0f, 0.0f, m_fDistance), new Vector3f(0.0f, 0.0f, 0.0f), new Vector3f(0.0f, 1.0f, 0.0f));
+		Matrix4f T = new Matrix4f(
+			1.0f, 0.0f, 0.0f, m_fTarget.x,
+			0.0f, 1.0f, 0.0f, m_fTarget.y,
+			0.0f, 0.0f, 1.0f, m_fTarget.z,
+			0.0f, 0.0f, 0.0f, 1.0f
+		);
 		
-		return V;
+		T.mul(V);
+		
+		Matrix4f XRotate = new Matrix4f(
+			1.0f, 0.0f, 						0.0f, 							0.0f,
+			0.0f, (float)Math.cos(m_fAngleX), 	(float)-Math.sin(m_fAngleX), 	0.0f,
+			0.0f, (float)Math.sin(m_fAngleX), 	(float)Math.cos(m_fAngleX), 	0.0f,
+			0.0f, 0.0f, 						0.0f, 							1.0f
+		);
+		XRotate.transpose();
+		
+		Matrix4f YRotate = new Matrix4f(
+			(float)Math.cos(m_fAngleY),		0.0f, (float)Math.sin(m_fAngleY),	0.0f,
+			0.0f, 							1.0f, 0.0f,							0.0f,
+			-(float)Math.sin(m_fAngleY),	0.0f, (float)Math.cos(m_fAngleY),	0.0f,
+			0.0f,							0.0f, 0.0f,							1.0f	
+		);
+		YRotate.transpose();
+		
+		T.mul(YRotate);
+		T.mul(XRotate);
+
+		return T;
 	}
 
 }

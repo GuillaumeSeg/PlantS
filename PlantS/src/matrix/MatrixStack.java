@@ -81,22 +81,4 @@ public class MatrixStack {
 		Matrix4f translate = new Matrix4f(1, 0, 0, t.x, 0, 1, 0, t.y, 0, 0, 1, t.z, 0, 0, 0, 1);
 		mult(translate);
 	}
-	
-	public float[] parseTopToFloatArray() {
-		int k = 0;
-		float[] matrix = new float[16];
-		for(int col=0; col<4; ++col) {
-			for(int row=0; row<4; ++row) {
-				matrix[k] = top().getElement(row, col);
-				//System.out.print(matrix[k] + " ");
-				++k;
-			}
-			//System.out.print("\n");
-		}
-		
-		
-		
-		return matrix;
-	}
-
 }

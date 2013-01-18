@@ -7,18 +7,18 @@ import java.util.List;
 import javax.media.opengl.GL3;
 import javax.media.opengl.GLAutoDrawable;
 import javax.media.opengl.GLEventListener;
-import javax.swing.ImageIcon;
+
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.vecmath.Matrix4f;
 import javax.vecmath.Vector3f;
 
+import matrix.GLMatrix;
 import matrix.GLMatrixTransform;
 import matrix.MatrixStack;
 
 import org.jdom2.Element;
 
 import xml.JDOMHierarchy;
-import camera.FreeFlyCamera;
 import camera.TrackballCamera;
 
 import dataTree.LeafTreeNode;
@@ -28,11 +28,12 @@ import dataTree.TrunckTreeNode;
 public class JOGLRenderer implements GLEventListener {
 	
 	JOGLShaderProgram m_ShaderProgram;
-	JDOMHierarchy m_JDOM;
 	DefaultMutableTreeNode m_TreeRoot;
 	
 	MatrixStack m_Stack;
 	int m_MVPLocation;
+	int m_MVLocation;
+	int m_PLocation;
 	TrackballCamera m_TCamera;
 	
 	float angle;
@@ -51,8 +52,7 @@ public class JOGLRenderer implements GLEventListener {
         	
         	m_Stack.rotate(new Vector3f(0.0f, 1f, 0.0f),  angle);
         	m_Stack.scale(new Vector3f(1f, 1f, 1f));
-        	gl.glUniformMatrix4fv(m_MVPLocation, 1, false, m_Stack.parseTopToFloatArray(), 0);
-        	
+
         	render(m_TreeRoot, gl);
         	
         	//angle = angle + 0.5f;
@@ -75,18 +75,23 @@ public class JOGLRenderer implements GLEventListener {
 		m_ShaderProgram = new JOGLShaderProgram(drawable, new File("src/shaders/color.vs.glsl"), new File("src/shaders/color.fs.glsl"));
 		
 		m_Stack = new MatrixStack();
-		m_Stack.set(GLMatrixTransform.Perspective(70.0f, 640/(float)640, 0.1f, 1000.0f));
-			
+		
+		Matrix4f P = new Matrix4f(GLMatrixTransform.Perspective(70.0f, 640/(float)640, 0.1f, 1000.0f));
+		m_Stack.set(P);
 		m_MVPLocation = gl.glGetUniformLocation(m_ShaderProgram.getProgram(), "uniform_MVP");
+		m_MVLocation = gl.glGetUniformLocation(m_ShaderProgram.getProgram(), "uniform_MV");
+		m_PLocation = gl.glGetUniformLocation(m_ShaderProgram.getProgram(), "uniform_P");
+		
+		//gl.glUniformMatrix4fv(m_PLocation, 1, false, GLMatrix.parseToFloatArray(P), 0);
 		
 		m_TCamera = new TrackballCamera();
 		
-		m_JDOM = new JDOMHierarchy(new File("src/xml/tree.xml"));
+		JDOMHierarchy jdom = new JDOMHierarchy(new File("src/xml/tree.xml"));
 		
 		PlantsTreeNode root = new TrunckTreeNode();
 		
 		m_TreeRoot = new DefaultMutableTreeNode(root, true);
-		fillTree(m_JDOM.getRoot(), m_TreeRoot);
+		fillTree(jdom.getRoot(), m_TreeRoot);
 		
 		displayTree(m_TreeRoot);
 		
@@ -140,13 +145,11 @@ public class JOGLRenderer implements GLEventListener {
 	}
 	
 	public void displayTree(DefaultMutableTreeNode tree) {
+		System.out.println(tree.getUserObject().toString());
 		for(int i = 0; i < tree.getChildCount(); ++i) {
-			System.out.print("\n");
-			
 			for(int j = 0; j < tree.getLevel()+1 ; ++j) {
 				System.out.print("   ");
 			}
-			
 			// on caste le résultat de getChildAt qui renvoie un TreeNode et non un DefaultMutableTreeNode
 			displayTree((DefaultMutableTreeNode) tree.getChildAt(i)); 
 		}

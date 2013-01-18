@@ -32,6 +32,19 @@ public class JOGLWindow {
 	private FPSAnimator m_Animator;
 	private JOGLRenderer m_Renderer;
 	
+	int currentKeyPressed;
+	private float TpreviousPositionX = 0;
+	private float TpreviousPositionY = 0;
+	private float TpositionX = 0;
+	private float TpositionY = 0;
+	
+	private float RpreviousPositionX = 0;
+	private float RpreviousPositionY = 0;
+	private float RpositionX = 0;
+	private float RpositionY = 0;
+	
+	private boolean mouseIsDown = false;
+	
 	public JOGLWindow(String name){
 		
 		m_Frame = new JFrame(name);
@@ -60,60 +73,84 @@ public class JOGLWindow {
 			}
 		});
 		
+		currentKeyPressed = 0;
+		
 		m_Canvas.addMouseListener(new MouseListener() {
 			
 			@Override
 			public void mouseReleased(MouseEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("released");			
+				currentKeyPressed = 0;
 			}
 			
 			@Override
 			public void mousePressed(MouseEvent e) {
-				// TODO Auto-generated method stub
-				if(e.getButton() == 2) {
-						System.out.println("pressed");			
-				}
+				currentKeyPressed = e.getButton();
+				RpreviousPositionX = e.getX();
+				RpreviousPositionY = e.getY();
+				TpreviousPositionX = e.getX();
+				TpreviousPositionY = e.getY();
+				
 			}
 			
 			@Override
 			public void mouseExited(MouseEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("exited");			
+				
 			}
 			
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("entered");			
+				
 			}
 			
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println("clicked");			
+				
 			}
 		});
 
 		m_Canvas.addMouseMotionListener(new MouseMotionListener() {
 			
+			
+			
 			@Override
 			public void mouseMoved(MouseEvent e) {
-				// TODO Auto-generated method stub
-				//System.out.println("moved");
+				
 			}
 			
 			@Override
 			public void mouseDragged(MouseEvent e) {
-				// TODO Auto-generated method stub
-				System.out.println(e.getButton());
-				if(e.getButton() == 0) {
-					float newXpositionCamera = (float)0.1*e.getX() / 640;
-					float newYpositionCamera = (float)0.1*e.getY() / 640;
-					System.err.println(newXpositionCamera + ", " + newYpositionCamera);
-					m_Renderer.getTCamera().setTarget(newXpositionCamera, newYpositionCamera);
-					System.out.println("dragged : " + e.getX() + ", " + e.getY());
+
+				
+				switch(currentKeyPressed) {
+					
+					case 2 :
+					
+					TpositionX = e.getX();
+					TpositionY = e.getY();
+					float tx = 0.005f*(TpositionX - TpreviousPositionX);
+					System.out.println(tx);
+					float ty = -0.005f*(TpositionY - TpreviousPositionY);
+					System.out.println(ty);
+					m_Renderer.getTCamera().setTarget(tx, ty);
+					TpreviousPositionX = TpositionX;
+					TpreviousPositionY = TpositionY;
+					
+					break;
+					
+					case 3 :
+
+					RpositionX = e.getX();
+					RpositionY = e.getY();
+					float rLeft = -0.01f *(RpositionX - RpreviousPositionX);
+					float rUp = -0.01f * (RpositionY - RpreviousPositionY);
+					m_Renderer.getTCamera().rotateLeft(rUp);
+					m_Renderer.getTCamera().rotateUp(rLeft);
+					RpreviousPositionX = RpositionX;
+					RpreviousPositionY = RpositionY;
+					
+					break;
 				}
+				
 			}
 		});
 		

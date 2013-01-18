@@ -4,6 +4,7 @@ import java.nio.FloatBuffer;
 
 import javax.media.opengl.GL3;
 
+import matrix.GLMatrix;
 import matrix.MatrixStack;
 
 import com.jogamp.common.nio.Buffers;
@@ -40,7 +41,7 @@ public class LeafTreeNode extends PlantsTreeNode {
 	}
 	
 	@Override
-	public void render(GL3 gl, MatrixStack stack, int MVPLocation) {
+	public void render(GL3 gl, MatrixStack stack, int MVLocation) {
 		
 		gl.glEnableVertexAttribArray(CST.SHADER_POSITION_LOCATION);        
         gl.glVertexAttribPointer(CST.SHADER_POSITION_LOCATION, 3, GL3.GL_FLOAT, false, 0, verticesPosition);
@@ -48,7 +49,7 @@ public class LeafTreeNode extends PlantsTreeNode {
         gl.glEnableVertexAttribArray(CST.SHADER_COLOR_LOCATION);        
         gl.glVertexAttribPointer(CST.SHADER_COLOR_LOCATION, 3, GL3.GL_FLOAT, false, 0, verticesColor);
         
-        gl.glUniformMatrix4fv(MVPLocation, 1, false, stack.parseTopToFloatArray(), 0);
+        gl.glUniformMatrix4fv(MVLocation, 1, false, GLMatrix.parseToFloatArray(stack.top()), 0);
         gl.glDrawArrays(GL3.GL_TRIANGLE_FAN, 0, nbVertices);
         
         gl.glDisableVertexAttribArray(CST.SHADER_POSITION_LOCATION); // Allow release of vertex position memory

@@ -6,13 +6,12 @@ import javax.media.opengl.GL3;
 import javax.vecmath.Matrix4f;
 import javax.vecmath.Vector3f;
 
+import matrix.GLMatrix;
 import matrix.MatrixStack;
 
 import com.jogamp.common.nio.Buffers;
 
 import drawable.Cylinder;
-
-import utils.CST;
 
 public class TrunckTreeNode extends PlantsTreeNode {
 
@@ -88,12 +87,12 @@ public class TrunckTreeNode extends PlantsTreeNode {
 		return ("TRUNCK - L = " + length + " - AXE = (" + axe[0] + ", " + axe[1] + ", " + axe[2] + ")");
 	}
 	
-	public void render(GL3 gl, MatrixStack stack, int MVPLocation) {
+	public void render(GL3 gl, MatrixStack stack, int MVLocation) {
 		
 		stack.rotate(getRotationMatrix());
 		
 		Cylinder cylinder = new Cylinder(length, length*0.1f, 50, 50);
-        gl.glUniformMatrix4fv(MVPLocation, 1, false, stack.parseTopToFloatArray(), 0);
+        gl.glUniformMatrix4fv(MVLocation, 1, false, GLMatrix.parseToFloatArray(stack.top()), 0);
         cylinder.draw(gl);
 		
 	}
