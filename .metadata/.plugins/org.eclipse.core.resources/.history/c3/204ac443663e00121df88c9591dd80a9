@@ -1,9 +1,0 @@
-package drawable;
-
-public class Vertex {
-	
-	private Vector3f m_Position;
-	private Vector3f m_Normal;
-	private Vector2f m_TexCoord;
-	
-}

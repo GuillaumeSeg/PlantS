@@ -1,41 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<<<<<<< HEAD
-<qualifiedTypeNameHistroy/>
-=======
 <qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.media.opengl.GLEventListener"/>
-<fullyQualifiedTypeName name="openGL3_test2.ShaderProgram"/>
-<fullyQualifiedTypeName name="openGL3_test2.JDOMHierarchy"/>
-<fullyQualifiedTypeName name="openGL3_test2.MatrixStack"/>
-<fullyQualifiedTypeName name="javax.vecmath.Matrix4d"/>
-<fullyQualifiedTypeName name="javax.vecmath.Vector3d"/>
-<fullyQualifiedTypeName name="javax.vecmath.Matrix3d"/>
 <fullyQualifiedTypeName name="java.lang.Math"/>
-<fullyQualifiedTypeName name="javax.media.opengl.GL2"/>
-<fullyQualifiedTypeName name="javax.media.opengl.GL"/>
-<fullyQualifiedTypeName name="javax.media.opengl.GLAutoDrawable"/>
-<fullyQualifiedTypeName name="java.nio.IntBuffer"/>
-<fullyQualifiedTypeName name="openGL3.MatrixStack"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="com.jogamp.common.nio.Buffers"/>
-<fullyQualifiedTypeName name="com.jogamp.newt.event.KeyListener"/>
-<fullyQualifiedTypeName name="openGL3.camera.FreeFlyCamera"/>
-<fullyQualifiedTypeName name="java.awt.Component"/>
-<fullyQualifiedTypeName name="java.awt.event.KeyListener"/>
-<fullyQualifiedTypeName name="javax.xml.crypto.KeySelectorResult"/>
-<fullyQualifiedTypeName name="java.awt.event.MouseListener"/>
-<fullyQualifiedTypeName name="utils.CST"/>
-<fullyQualifiedTypeName name="javax.vecmath.Vector2f"/>
-<fullyQualifiedTypeName name="com.jogamp.graph.geom.Vertex"/>
-<fullyQualifiedTypeName name="java.awt.List"/>
-<fullyQualifiedTypeName name="javax.media.opengl.GL3"/>
-<fullyQualifiedTypeName name="drawable.Square"/>
-<fullyQualifiedTypeName name="java.nio.FloatBuffer"/>
-<fullyQualifiedTypeName name="drawable.VertexShape"/>
-<fullyQualifiedTypeName name="drawable.Cylinder"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
-<fullyQualifiedTypeName name="renderer.MatrixStack"/>
-<fullyQualifiedTypeName name="javax.vecmath.Matrix4f"/>
-<fullyQualifiedTypeName name="javax.vecmath.Vector3f"/>
 </qualifiedTypeNameHistroy>
->>>>>>> 4ba9078b66720f33e48ae9a624bd6d4de61176f8

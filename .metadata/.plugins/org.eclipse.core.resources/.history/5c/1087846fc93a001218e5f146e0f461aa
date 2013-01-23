@@ -1,5 +1,0 @@
-package openGL3.camera;
-
-public class TrackBallCamera {
-
-}

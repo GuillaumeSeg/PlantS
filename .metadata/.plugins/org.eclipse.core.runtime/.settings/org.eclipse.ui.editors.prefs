@@ -20,6 +20,7 @@ eclipse.preferences.version=1
 filteredSearchResultIndicationColor=239,239,239
 javaScriptOccurrenceIndicationColor=239,239,239
 lineNumberColor=153,153,153
+lineNumberRuler=true
 matchingTagIndicationColor=239,239,239
 occurrenceIndicationColor=239,239,239
 overviewRuler_migration=migrated_3.1
