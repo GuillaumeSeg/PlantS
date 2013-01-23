@@ -54,12 +54,12 @@ public class FreeFlyCamera {
 	}
 	
 	public void moveFront(float t) {
-		System.out.println(m_Position.toString());
-		System.out.println(m_FrontVector.toString());
+		//System.out.println(m_Position.toString());
+		//System.out.println(m_FrontVector.toString());
 		m_Position.x += t*m_FrontVector.x;
 		m_Position.y += t*m_FrontVector.y;
 		m_Position.z += t*m_FrontVector.z;
-		System.out.println(m_Position.toString());
+		//System.out.println(m_Position.toString());
 	}
 	
 	public void rotateLeft(float degrees) {

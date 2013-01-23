@@ -16,55 +16,42 @@ import drawable.Cylinder;
 public class TrunckTreeNode extends PlantsTreeNode {
 
 	float length;
-	float[] axe;
-	float ldiamb, sdiamb, ldiamt, sdiamt; 
-	float[] texCoord;
+	Vector3f axe;
 	float radius;
-	float radiusPere;
-	
-	FloatBuffer verticesPosition;
-	FloatBuffer verticesColor;
+	float alpha;
+
 	int nbVertices;
+	Matrix4f MPcp, MPcb;
 	
-	public TrunckTreeNode(float length, float[] axe, float rad, float radp) {
+	Cylinder cylinder;
+	
+	public TrunckTreeNode(float length, Vector3f axe, float rad, Matrix4f PASSAGEchildParent, Matrix4f PASSAGEchildBrother) {
 		
 		this.length = length;
-		this.axe = new float[3];
-		this.axe[0] = axe[0];
-		this.axe[1] = axe[1];
-		this.axe[2] = axe[2];
+		this.axe = axe;
 		this.radius = rad;
-		this.radiusPere = radp;
+		float normeAxe = axe.length();
+		this.alpha = (float) Math.acos(axe.x/normeAxe);
+		if(axe.y < 0) {
+			this.alpha = -this.alpha;
+		}
+		MPcp = new Matrix4f(PASSAGEchildParent);
+		MPcb = new Matrix4f(PASSAGEchildBrother);
 		
-		float[] array_verticesPosition = new float[] {
-				0.0f, 0.0f, 0.0f,
-				0.0f, 1.0f, 0.0f
-		};
-		
-		verticesPosition = Buffers.newDirectFloatBuffer(array_verticesPosition);
-		nbVertices = array_verticesPosition.length/3;
-		
-		float[] array_verticesColor = new float[] {
-				0.4f, 0.2f, 0.0f,
-				0.4f, 0.2f, 0.0f
-		};
-		
-		verticesColor = Buffers.newDirectFloatBuffer(array_verticesColor);
+		cylinder = new Cylinder(length, radius, 55, 55, alpha, MPcp, MPcb);
 		
 	}
 	
 	public TrunckTreeNode() {
 		this.length = 0;
-		this.axe = new float[3];
-		this.axe[0] = 0;
-		this.axe[1] = 1;
-		this.axe[2] = 0;
+		this.axe = new Vector3f(0, 1, 0);
+		this.alpha = 1.0f;
+		cylinder = new Cylinder(0, 0, 1, 1, 0, new Matrix4f(), new Matrix4f());
 	}
 
 	public Matrix4f getRotationMatrix() {
 		
-		// changement de référentiel
-		Vector3f v = new Vector3f(axe[0], axe[1], axe[2]);
+		Vector3f v = new Vector3f(axe);
 		v.normalize();
 		
 		Vector3f uPrim = new Vector3f(1.0f, 0.0f, 0.0f);
@@ -88,14 +75,12 @@ public class TrunckTreeNode extends PlantsTreeNode {
 	}
 
 	public String toString() {
-		return ("TRUNCK - L = " + length + " - AXE = (" + axe[0] + ", " + axe[1] + ", " + axe[2] + ")");
+		return ("TRUNCK - L = " + length + " - AXE = " + axe.toString()  + " - angle =" + alpha +"");
 	}
 	
 	public void render(GL3 gl, MatrixStack stack, int MVLocation) {
 		
 		stack.rotate(getRotationMatrix());
-		
-		Cylinder cylinder = new Cylinder(length, radius, 45, 45, radiusPere);
         gl.glUniformMatrix4fv(MVLocation, 1, false, GLMatrix.parseToFloatArray(stack.top()), 0);
         cylinder.draw(gl);
 		

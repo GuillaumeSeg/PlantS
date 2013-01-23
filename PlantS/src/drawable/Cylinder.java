@@ -4,6 +4,10 @@ import java.nio.FloatBuffer;
 import java.util.ArrayList;
 
 import javax.media.opengl.GL3;
+import javax.vecmath.Matrix4f;
+import javax.vecmath.Vector4f;
+
+import matrix.GLMatrixTransform;
 
 import com.jogamp.common.nio.Buffers;
 
@@ -16,25 +20,20 @@ public class Cylinder {
 	private ArrayList<VertexShape> m_Vertices; // une liste des points composant la forme
 	private int m_NBvertices;
 	private static int s_DrawingMode = GL3.GL_POINTS; // le mode de dessin
-	private FloatBuffer m_BufferPosition; // le buffer contenant les points à envoyer à openGL
-	private FloatBuffer m_BufferColor; // le buffer contenant les points à envoyer à openGL
-
-	public Cylinder(float height, float radius, int discLat, int discHeight, float radpere) {
+	private FloatBuffer m_BufferPositionC;
+	private FloatBuffer m_BufferPositionP;
+	private FloatBuffer m_BufferPositionB;
+	
+	
+	public Cylinder(float height, float radius, int discLat, int discHeight, float iangle, Matrix4f MPcp, Matrix4f MPcb) {
 		
 		float rcpLat = 1.f / discLat, rcpH = 1.f / discHeight;
         float dPhi = 2 * (float)Math.PI * rcpLat, dH = height * rcpH;
         
         ArrayList<VertexShape> allVertices = new ArrayList<VertexShape>();
-        float correctedRadius;
-        float a = 0;
         
         // Construit l'ensemble des vertex
         for(int j = 0; j <= discHeight; ++j) {
-        	//correctedRadius = (1 - (float)4*j/discHeight)*radpere + ((float)4*j/discHeight)*radius;
-        	//Correction exponentielle :
-        	correctedRadius = (float) (Math.exp(-a)*radpere + (1 - Math.exp(-a))*radius);
-        	a = a + 0.0625f;
-        	
         	for(int i = 0; i < discLat; ++i) {
         		
                 VertexShape v = new VertexShape();
@@ -46,19 +45,13 @@ public class Cylinder {
                 v.normal.y = 0;
                 v.normal.z = (float)Math.cos(i * dPhi);
                 
-                if(j < discHeight) {
-	                v.position.x = correctedRadius * (float)Math.sin(i*dPhi);
-	                v.position.y = j* dH;
-	                v.position.z = correctedRadius * (float)Math.cos(i * dPhi);
-                }
-                else {
-                	v.position.x = radius * (float)Math.sin(i*dPhi);
-                    v.position.y = j * dH;
-                    v.position.z = radius * (float)Math.cos(i * dPhi);
-                }
-                
+            	v.position.x = radius * (float)Math.sin(i*dPhi);
+                v.position.y = j * dH;
+                v.position.z = radius * (float)Math.cos(i * dPhi);
+                v.position.w = 1 - 4*(float)j/discHeight;
                 
                 allVertices.add(v);
+                
             }
         }
         
@@ -66,13 +59,10 @@ public class Cylinder {
         
         for(int i = 0; i < discHeight/4; ++i) {
         	
-        	//correctedRadius = (1 - (float)2*i/discHeight)*radpere + ((float)2*i/discHeight)*radius;
-        	
-        	
         	float weight = (1-(float)4*i/discHeight);
         	float angle = (float)Math.PI/4;
-        	float ponderateAngle = weight * angle;
-        	        	
+        	float ponderateAngle = weight*angle;
+        	
     		for(int j = 0; j < discLat/2; ++j) {
         		float tmpx = allVertices.get(j + discLat*i).position.x;
         		float tmpy = allVertices.get(j + discLat*i).position.y;
@@ -88,7 +78,7 @@ public class Cylinder {
         		allVertices.set(j  + discLat*i, new VertexShape(newx, newy, newz));
     		}
     		
-    		ponderateAngle = -ponderateAngle;
+    		ponderateAngle =  (float) (weight*(angle - (float)Math.PI/2));
     		
     		for(int j = discLat/2; j < discLat; ++j) {
 
@@ -107,21 +97,29 @@ public class Cylinder {
         	}
         }
         
-        //Deuxième boucle pour l'homothétie... (pour enlever le bulbe artefact)
-        for(int i = 0; i < discHeight/4; ++i) {
-        	float rapport = 0.95f; //Le rapport de l'homothétie
-        	for(int j = 0; j < discLat; ++j) {
-        		float newx = allVertices.get(j + discLat*i).position.x;
-        		float newy = allVertices.get(j + discLat*i).position.y;
-        		float newz = allVertices.get(j + discLat*i).position.z;
-        		
-        		newx = rapport*newx;
-        		newz = rapport*newz;
-        		
-        		allVertices.set(j  + discLat*i, new VertexShape(newx, newy, newz));
-        	}
+        int k = 0;
+        
+        for(VertexShape v : allVertices) {
+        	
+        	int j = k/discHeight;
+        	
+        	// Calcul des positions dans les repères parents et frères
+            Vector4f coordsRP = new Vector4f(GLMatrixTransform.multMat4Vec4(MPcp, new Vector4f(v.position.x, v.position.y, v.position.z, 1)));
+            v.positionRP.x = coordsRP.x/coordsRP.w;
+            v.positionRP.y = coordsRP.y/coordsRP.w;
+            v.positionRP.z = coordsRP.z/coordsRP.w;
+            v.positionRP.w = 1;
+            
+            Vector4f coordsRB = new Vector4f(GLMatrixTransform.multMat4Vec4(MPcb, new Vector4f(v.position.x, v.position.y, v.position.z, 1)));
+            v.positionRB.x = coordsRB.x/coordsRB.w;
+            v.positionRB.y = coordsRB.y/coordsRB.w;
+            v.positionRB.z = coordsRB.z/coordsRB.w;
+            v.positionRB.w = 1;
+            
+            k++;
+            
         }
-        //
+        
         
         m_Vertices = new ArrayList<VertexShape>();
         m_NBvertices = discLat * discHeight * 6; // *6 car 2 triangles
@@ -142,26 +140,33 @@ public class Cylinder {
             }
         }
         
-        m_BufferPosition = Buffers.newDirectFloatBuffer(getFloatArray());
-        m_BufferColor = Buffers.newDirectFloatBuffer(getColorFloatArray());
+        m_BufferPositionC = Buffers.newDirectFloatBuffer(getPositionCFloatArray());
+        m_BufferPositionP = Buffers.newDirectFloatBuffer(getPositionPFloatArray());
+        m_BufferPositionB = Buffers.newDirectFloatBuffer(getPositionBFloatArray());
+        
 	}
 	
 	public void draw(GL3 gl) {
-		gl.glEnableVertexAttribArray(CST.SHADER_POSITION_LOCATION);        
-        gl.glVertexAttribPointer(CST.SHADER_POSITION_LOCATION, 3, GL3.GL_FLOAT, false, 0, m_BufferPosition);
+		
+		gl.glEnableVertexAttribArray(CST.SHADER_POSITIONC_LOCATION);        
+        gl.glVertexAttribPointer(CST.SHADER_POSITIONC_LOCATION, VertexShape.s_NB_COMPONENTS_POSITION, GL3.GL_FLOAT, false, 0, m_BufferPositionC);
         
-        gl.glEnableVertexAttribArray(CST.SHADER_COLOR_LOCATION);        
-        gl.glVertexAttribPointer(CST.SHADER_COLOR_LOCATION, 3, GL3.GL_FLOAT, false, 0, m_BufferColor);
+        gl.glEnableVertexAttribArray(CST.SHADER_POSITIONP_LOCATION);        
+        gl.glVertexAttribPointer(CST.SHADER_POSITIONP_LOCATION, VertexShape.s_NB_COMPONENTS_POSITION, GL3.GL_FLOAT, false, 0, m_BufferPositionP);
+        
+        gl.glEnableVertexAttribArray(CST.SHADER_POSITIONB_LOCATION);        
+        gl.glVertexAttribPointer(CST.SHADER_POSITIONB_LOCATION, VertexShape.s_NB_COMPONENTS_POSITION, GL3.GL_FLOAT, false, 0, m_BufferPositionB);
         
         gl.glDrawArrays(s_DrawingMode, 0, m_NBvertices);
         
-        gl.glDisableVertexAttribArray(CST.SHADER_POSITION_LOCATION); // Allow release of vertex position memory
-        gl.glDisableVertexAttribArray(CST.SHADER_COLOR_LOCATION); // Allow release of vertex color memory
+        gl.glDisableVertexAttribArray(CST.SHADER_POSITIONC_LOCATION);
+        gl.glDisableVertexAttribArray(CST.SHADER_POSITIONP_LOCATION);
+        gl.glDisableVertexAttribArray(CST.SHADER_POSITIONB_LOCATION);
 	}
 	
-	public float[] getFloatArray() {
+	public float[] getPositionCFloatArray() {
 		
-		float[] vertices = new float[m_NBvertices * VertexShape.s_NB_TOTAL_COMPONENTS];
+		float[] vertices = new float[m_NBvertices * VertexShape.s_NB_COMPONENTS_POSITION];
 		int i = 0;
 		for(VertexShape v : m_Vertices) {
 			vertices[i] = v.position.x;
@@ -174,17 +179,33 @@ public class Cylinder {
 		
 		return vertices;
 	}
-
-	public float[] getColorFloatArray() {
+	
+	public float[] getPositionPFloatArray() {
 		
-		float[] vertices = new float[m_NBvertices * VertexShape.s_NB_TOTAL_COMPONENTS];
+		float[] vertices = new float[m_NBvertices * VertexShape.s_NB_COMPONENTS_POSITION];
 		int i = 0;
 		for(VertexShape v : m_Vertices) {
-			vertices[i] = 1f;
+			vertices[i] = v.positionRP.x;
 			++i;
-			vertices[i] = 1f;
+			vertices[i] = v.positionRP.y;
 			++i;
-			vertices[i] = 1f;
+			vertices[i] = v.positionRP.z;
+			++i;
+		}
+		
+		return vertices;
+	}
+	
+	public float[] getPositionBFloatArray() {
+		
+		float[] vertices = new float[m_NBvertices * VertexShape.s_NB_COMPONENTS_POSITION];
+		int i = 0;
+		for(VertexShape v : m_Vertices) {
+			vertices[i] = v.positionRB.x;
+			++i;
+			vertices[i] = v.positionRB.y;
+			++i;
+			vertices[i] = v.positionRB.z;
 			++i;
 		}
 		

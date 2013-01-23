@@ -1,0 +1,14 @@
+<arbre>
+    <trunck length="3" radius="0.1" ldiamb="" sdiamb="" ldiamt="" sdiamt="" axe="0 1 0">
+    	    <trunck length="3" radius="0.1" ldiamb="" sdiamb="" ldiamt="" sdiamt="" axe="0.5 0.5 0">
+    	    	<trunck length="4" radius="0.1" ldiamb="" sdiamb="" ldiamt="" sdiamt="" axe="0.5 0.5 0"></trunck>
+    	    	<trunck length="3" radius="0.1" ldiamb="" sdiamb="" ldiamt="" sdiamt="" axe="-0.5 0.5 0">
+    	    		<trunck length="1" radius="0.1" ldiamb="" sdiamb="" ldiamt="" sdiamt="" axe="-0.5 0.5 0"></trunck>
+    	    	</trunck>
+    	    </trunck>
+    	    <trunck length="3" radius="0.1" ldiamb="" sdiamb="" ldiamt="" sdiamt="" axe="-0.5 0.5 0">
+    	    	<trunck length="3" radius="0.1" ldiamb="" sdiamb="" ldiamt="" sdiamt="" axe="0.5 0.5 0"></trunck>
+    	    	<trunck length="3" radius="0.1" ldiamb="" sdiamb="" ldiamt="" sdiamt="" axe="-0.5 0.5 0"></trunck>
+    	    </trunck>    	    
+	</trunck>
+</arbre>

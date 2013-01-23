@@ -1,6 +1,7 @@
 package renderer;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -48,7 +49,7 @@ public class JOGLRenderer implements GLEventListener {
 		
         m_Stack.push();
         	
-        	m_Stack.mult(m_TCamera.getViewMatrix());
+        	m_Stack.mult(m_TCamera.getViewMatrix()); // View Matrix
         	
         	m_Stack.rotate(new Vector3f(0.0f, 1f, 0.0f),  angle);
         	m_Stack.scale(new Vector3f(1f, 1f, 1f));
@@ -77,12 +78,12 @@ public class JOGLRenderer implements GLEventListener {
 		m_Stack = new MatrixStack();
 		
 		Matrix4f P = new Matrix4f(GLMatrixTransform.Perspective(70.0f, 640/(float)640, 0.1f, 1000.0f));
-		m_Stack.set(P);
+		
 		m_MVPLocation = gl.glGetUniformLocation(m_ShaderProgram.getProgram(), "uniform_MVP");
 		m_MVLocation = gl.glGetUniformLocation(m_ShaderProgram.getProgram(), "uniform_MV");
 		m_PLocation = gl.glGetUniformLocation(m_ShaderProgram.getProgram(), "uniform_P");
 		
-		//gl.glUniformMatrix4fv(m_PLocation, 1, false, GLMatrix.parseToFloatArray(P), 0);
+		gl.glUniformMatrix4fv(m_PLocation, 1, false, GLMatrix.parseToFloatArray(P), 0);
 		
 		m_TCamera = new TrackballCamera();
 		
@@ -109,31 +110,37 @@ public class JOGLRenderer implements GLEventListener {
 			List<Element> childrenList = JDOMelement.getChildren();
 			Iterator<Element> itChildren = childrenList.iterator();
 			
-			/*float[] childrenRatios = new float[childrenList.size()];
-			
+			// Get children axes
+			ArrayList<Vector3f> axesList = new ArrayList<Vector3f>();
 			while(itChildren.hasNext()) {
-				float radtemp;
-				float radfrere;
-			}*/
-			
-			// reboot iterator
-			//itChildren = childrenList.iterator();
+				Element JDOMchild = (Element)itChildren.next();
+				if(JDOMchild.getName() == "trunck") {
+					String axeXYZ = JDOMchild.getAttributeValue("axe");
+					String vect[] = axeXYZ.split(" ");
+					float x = Float.parseFloat(vect[0]);
+					float y = Float.parseFloat(vect[1]);
+					float z = Float.parseFloat(vect[2]);
+					axesList.add(new Vector3f(x, y, z));
+				}
+			}
+
+			itChildren = childrenList.iterator();
+			int numChild = 0;
+			int nbChildren = axesList.size();
 			
 			while(itChildren.hasNext()){
-				Element JDOMchild = (Element)itChildren.next();
-				//Element JDOMbrother = (Element)itChildren.next();
 				
+				Element JDOMchild = (Element)itChildren.next();
 				DefaultMutableTreeNode treeChild = null;
 				
 				switch(JDOMchild.getName()) {
 					
 					case "trunck" :
+						
 						float radp = Float.parseFloat(JDOMchild.getAttributeValue("radius"));
 						if(JDOMelement.getAttributeValue("radius") != null) {
 						  radp = Float.parseFloat(JDOMelement.getAttributeValue("radius"));
 						}
-						/*float v = Float.parseFloat(JDOMchild.getAttributeValue("ratio"));
-						float k = Float.parseFloat(JDOMbrother.getAttributeValue("ratio"));*/
 						
 						String axeXYZ = JDOMchild.getAttributeValue("axe");
 						String vect[] = axeXYZ.split(" ");
@@ -141,12 +148,76 @@ public class JOGLRenderer implements GLEventListener {
 						float y = Float.parseFloat(vect[1]);
 						float z = Float.parseFloat(vect[2]);
 						
-						float[] axe = {
-								x, y, z
-						};
-						float rad = Float.parseFloat(JDOMchild.getAttributeValue("radius"));
 						
-						treeChild = new DefaultMutableTreeNode(new TrunckTreeNode(Float.parseFloat(JDOMchild.getAttributeValue("length")), axe,rad, radp ));
+						float rad = Float.parseFloat(JDOMchild.getAttributeValue("radius"));
+						float length = Float.parseFloat(JDOMchild.getAttributeValue("length"));
+						
+						Vector3f v = new Vector3f(x, y, z);
+						v.normalize();
+						
+						Matrix4f PASSAGEbrotherParent = new Matrix4f();
+						PASSAGEbrotherParent.setIdentity();
+							
+						// Matrice de passage FILS -> PERE
+						
+						Vector3f u = new Vector3f();
+						Vector3f Y = new Vector3f(0, 1, 0);
+						if(v.dot(Y) > 0.9) {
+							u.cross(v, new Vector3f(0, 0, 1));
+						} else {
+							u.cross(v, Y);
+						}
+						u.normalize();
+						Vector3f w = new Vector3f();
+						w.cross(u, v);
+						w.normalize();
+						
+						Matrix4f PASSAGEchildParent = new Matrix4f(
+								u.x,	v.x,	w.x,	0,
+								u.y,	v.y,	w.y,	-length,
+								u.z,	v.z,	w.z,	0,
+								0,		0,		0,		1								
+						);
+						
+						if(nbChildren > 1) {
+							
+							// Matrice de passage FRERE -> PERE
+							
+							Vector3f brotherAxe = new Vector3f();
+							
+							if(numChild == 0) {
+								brotherAxe = axesList.get(1);
+							} else {
+								brotherAxe = axesList.get(0);
+							}
+							
+							if(brotherAxe.dot(Y) > 0.9) {
+								u.cross(brotherAxe, new Vector3f(0, 0, 1));
+							} else {
+								u.cross(brotherAxe, Y);
+							}
+							u.normalize();
+							w = new Vector3f();
+							w.cross(u, brotherAxe);
+							w.normalize();
+							
+							PASSAGEbrotherParent = new Matrix4f(
+									u.x,	brotherAxe.x,	w.x,	0,
+									u.y,	brotherAxe.y,	w.y,	-length,
+									u.z,	brotherAxe.z,	w.z,	0,
+									0,		0,				0,		1								
+							);
+							
+						}
+							
+						// PASSAGE FILS -> FRERE
+						Matrix4f PASSAGEparentBrother = new Matrix4f(PASSAGEbrotherParent);
+						PASSAGEparentBrother.invert();
+						
+						Matrix4f PASSAGEchildBrother = new Matrix4f(PASSAGEchildParent);
+						PASSAGEchildBrother.mul(PASSAGEparentBrother);					
+						
+						treeChild = new DefaultMutableTreeNode(new TrunckTreeNode(length, v, rad, PASSAGEchildParent, PASSAGEchildBrother));
 						
 					break;
 						
@@ -161,6 +232,7 @@ public class JOGLRenderer implements GLEventListener {
 				
 				fillTree(JDOMchild, treeChild);
 				tree.add(treeChild);
+				numChild ++;
 			}
 		}
 	}
@@ -181,7 +253,7 @@ public class JOGLRenderer implements GLEventListener {
 		m_Stack.push();
 			
 			// on caste le résultat de getUserObject car cette fonction renvoie un objet de type Object, et la fonction render n'est une fonction membre que des objets de type PlantsTreeNode
-			((PlantsTreeNode)tree.getUserObject()).render(gl, m_Stack, m_MVPLocation);
+			((PlantsTreeNode)tree.getUserObject()).render(gl, m_Stack, m_MVLocation);
 			m_Stack.translate(new Vector3f(0, ((TrunckTreeNode)tree.getUserObject()).getLength(), 0));
 			
 			// draw children

@@ -135,9 +135,9 @@ public class JOGLWindow {
 					TpositionX = e.getX();
 					TpositionY = e.getY();
 					float tx = 0.002f*(TpositionX - TpreviousPositionX);
-					System.out.println(tx);
+					//System.out.println(tx);
 					float ty = -0.002f*(TpositionY - TpreviousPositionY);
-					System.out.println(ty);
+					//System.out.println(ty);
 					m_Renderer.getTCamera().setTarget(tx, ty);
 					TpreviousPositionX = TpositionX;
 					TpreviousPositionY = TpositionY;

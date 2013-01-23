@@ -46,30 +46,7 @@ public class MatrixStack {
 	}
 	
 	public void rotate(Vector3f dir, float angle) {
-		
-		dir.normalize();
-		angle = angle * 2.f * (float)Math.PI / 360.f;
-		float cos = (float) Math.cos(angle);
-		float sin = (float) Math.sin(angle);
-		
-		float a11 = dir.x*dir.x + (1-dir.x*dir.x)*cos;
-		float a12 = dir.x*dir.y*(1-cos) - dir.z*sin;
-		float a13 = dir.x*dir.z*(1-cos) + dir.y*sin;
-		float a14 = 0;
-		float a21 = dir.x*dir.y*(1-cos) + dir.z*sin;
-		float a22 = dir.y*dir.y + (1-dir.y*dir.y)*cos;
-		float a23 = dir.y*dir.z*(1-cos) - dir.x*sin;
-		float a24 = 0;
-		float a31 = dir.x*dir.z*(1-cos) - dir.y*sin;
-		float a32 = dir.y*dir.z*(1-cos) + dir.x*sin;
-		float a33 = dir.z*dir.z + (1-dir.z*dir.z)*cos;
-		float a34 = 0;
-		float a41 = 0;
-		float a42 = 0;
-		float a43 = 0;
-		float a44 = 1;
-		
-		Matrix4f rotate = new Matrix4f(a11, a12, a13, a14, a21, a22, a23, a24, a31, a32, a33, a34, a41, a42, a43, a44);
+		Matrix4f rotate = GLMatrixTransform.Rotation(dir, angle);
 		mult(rotate);
 	}
 	
@@ -78,7 +55,7 @@ public class MatrixStack {
 	}
 	
 	public void translate(Vector3f t) {
-		Matrix4f translate = new Matrix4f(1, 0, 0, t.x, 0, 1, 0, t.y, 0, 0, 1, t.z, 0, 0, 0, 1);
+		Matrix4f translate = GLMatrixTransform.Translation(t);
 		mult(translate);
 	}
 }

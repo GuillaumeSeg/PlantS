@@ -1,0 +1,20 @@
+#version 330
+
+layout(location = 0) in vec4 attribute_PositionC;
+layout(location = 1) in vec4 attribute_PositionP;
+layout(location = 2) in vec4 attribute_PositionB;
+
+uniform mat4 uniform_MV = mat4(1.f);
+uniform mat4 uniform_P = mat4(1.f);
+
+void main(void) {
+
+	mat4 MVP = uniform_P * uniform_MV;
+	
+	vec3 positionC = vec3(uniform_MV * vec4(attribute_PositionC.xyz, 1f));
+	vec3 positionP = vec3(uniform_MV * vec4(attribute_PositionP.xyz, 1f));
+	vec3 positionB = vec3(uniform_MV * vec4(attribute_PositionB.xyz, 1f));
+	
+	gl_Position = attribute_PositionC.w * positionC + attribute_PositionP.w * positionP + attribute_PositionB.w * positionB;
+	
+};

@@ -43,8 +43,6 @@ public class TrackballCamera {
 	
 	public Matrix4f getViewMatrix() {
 		
-		Matrix4f V = new Matrix4f();
-		V = GLMatrixTransform.LookAt(new Vector3f(0.0f, 0.0f, m_fDistance), m_fTarget, new Vector3f(0.0f, 1.0f, 0.0f));
 		Matrix4f T = new Matrix4f(
 			1.0f, 0.0f, 0.0f, m_fTarget.x,
 			0.0f, 1.0f, 0.0f, m_fTarget.y,
@@ -52,7 +50,7 @@ public class TrackballCamera {
 			0.0f, 0.0f, 0.0f, 1.0f
 		);
 		
-		T.mul(V);
+		T.mul(GLMatrixTransform.LookAt(new Vector3f(0.0f, 0.0f, m_fDistance), new Vector3f(0, 0, 0), new Vector3f(0.0f, 1.0f, 0.0f)));
 		
 		Matrix4f XRotate = new Matrix4f(
 			1.0f, 0.0f, 						0.0f, 							0.0f,
